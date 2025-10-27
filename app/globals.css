@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	/* Core colors */
+	--background: "#000000";
+	--foreground: "#ffffff";
+
+	/* Accent colors */
+	--primary: "#3b82f6";
+	--primary-foreground: "#ffffff";
+
+	/* Border & ring */
+	--border: "#3b82f6";
+	--ring: "#3b82f6";
+
+	/* Border radius */
+	--radius: "0.75rem";
+
+	/* Typography */
+	--font-size: "16px";
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-black text-white antialiased;
+	}
+
+	html {
+		font-size: var(--font-size);
+	}
+}
