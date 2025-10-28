@@ -61,15 +61,15 @@ const Projects = dynamic(
 	}
 );
 
-const Testimonials = dynamic(
-	() =>
-		import("@/components/sections/Testimonials/Testimonials").then((mod) => ({
-			default: mod.Testimonials,
-		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
-);
+// const Testimonials = dynamic(
+// 	() =>
+// 		import("@/components/sections/Testimonials/Testimonials").then((mod) => ({
+// 			default: mod.Testimonials,
+// 		})),
+// 	{
+// 		loading: () => <LoadingSpinner fullScreen />,
+// 	}
+// );
 
 const Contact = dynamic(
 	() =>
@@ -257,13 +257,13 @@ export default function Home() {
 					<Projects />
 				</div>
 
-				<div
+				{/* <div
 					ref={testimonialsRef}
 					data-section="testimonials"
 					className="min-h-screen"
 				>
 					<Testimonials />
-				</div>
+				</div> */}
 
 				<div ref={contactRef} data-section="contact" className="min-h-screen">
 					<Contact />
