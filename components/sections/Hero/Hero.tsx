@@ -214,7 +214,7 @@ export function Hero() {
 							textGradientVariants({ variant: "whiteGray" })
 						)}
 					>
-						I&apos;m Reasey
+						I&apos;m Serei Neath
 					</span>
 					<span
 						className={twMerge(

@@ -83,6 +83,7 @@ const Contact = dynamic(
 
 export default function Home() {
 	const [currentSection, setCurrentSection] = useState<Section>("hero");
+	const pendingSectionRef = useRef<Section | null>(null);
 	const smootherRef = useRef<ScrollSmoother | null>(null);
 	const heroRef = useRef<HTMLDivElement>(null);
 	const aboutRef = useRef<HTMLDivElement>(null);
@@ -117,9 +118,16 @@ export default function Home() {
 		};
 
 		const targetElement = refs[section].current;
-		if (targetElement && smootherRef.current) {
-			smootherRef.current.scrollTo(targetElement, true, "top top");
+		if (targetElement) {
+			if (smootherRef.current) {
+				smootherRef.current.scrollTo(targetElement, true, "top top");
+			} else {
+				targetElement.scrollIntoView({ behavior: "smooth" });
+			}
 		}
+
+		setCurrentSection(section);
+		pendingSectionRef.current = section;
 	};
 
 	useEffect(() => {
@@ -137,7 +145,7 @@ export default function Home() {
 						{ ref: journeyRef, id: "journey" as Section },
 						{ ref: experienceRef, id: "experience" as Section },
 						{ ref: projectsRef, id: "projects" as Section },
-						{ ref: testimonialsRef, id: "testimonials" as Section },
+						// { ref: testimonialsRef, id: "testimonials" as Section },
 						{ ref: contactRef, id: "contact" as Section },
 					];
 
@@ -163,7 +171,11 @@ export default function Home() {
 						}
 					});
 
-					setCurrentSection(currentSectionId);
+					const pendingTarget = pendingSectionRef.current;
+					if (!pendingTarget || pendingTarget === currentSectionId) {
+						pendingSectionRef.current = null;
+						setCurrentSection(currentSectionId);
+					}
 					ticking = false;
 				});
 

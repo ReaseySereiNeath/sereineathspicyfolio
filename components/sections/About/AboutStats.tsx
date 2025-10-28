@@ -64,7 +64,7 @@ export function AboutStats() {
 			{stats.map((stat, index) => (
 				<div
 					key={index}
-					className="about-stat-card cursor-default rounded-xl border border-blue-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-4 backdrop-blur-sm transition-all duration-300"
+					className="cursor-default rounded-xl border border-blue-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-4 backdrop-blur-sm transition-all duration-300"
 				>
 					<stat.icon className="mb-2 h-6 w-6 text-blue-400" />
 					<div className="mb-1 bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-lg text-transparent md:text-xl">
