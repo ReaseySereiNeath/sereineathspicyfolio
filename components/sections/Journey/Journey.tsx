@@ -87,7 +87,7 @@ export function Journey() {
 				/>
 
 				{/* Timeline Content */}
-				<div className="relative -mt-80 w-full pb-40">
+				<div className="relative -mt-36 w-full pb-40 md:-mt-48 lg:-mt-60 xl:-mt-72 2xl:mt-0">
 					<TimelinePic
 						id="uoft"
 						src="/uoft.jpg"
