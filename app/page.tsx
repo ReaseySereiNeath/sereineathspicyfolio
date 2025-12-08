@@ -5,7 +5,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { LoadingSpinner } from "@/components/ui";
 import type { Section } from "@/lib/types";
-import { gsap, ScrollSmoother } from "@/lib/utils/gsap-config";
+import { gsap, ScrollSmoother, ScrollTrigger } from "@/lib/utils/gsap-config";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
@@ -91,17 +91,20 @@ export default function Home() {
 	const journeyRef = useRef<HTMLDivElement>(null);
 	const experienceRef = useRef<HTMLDivElement>(null);
 	const projectsRef = useRef<HTMLDivElement>(null);
-	const testimonialsRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 	const orb1Ref = useRef<HTMLDivElement>(null);
 	const orb2Ref = useRef<HTMLDivElement>(null);
 
 	// Initialize ScrollSmoother
 	useGSAP(() => {
+		// Check if device is mobile/touch device
+		const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 		smootherRef.current = ScrollSmoother.create({
-			smooth: 2,
+			smooth: isMobile ? 1 : 2, // Less smoothing on mobile for better performance
 			effects: true,
-			smoothTouch: 0.1,
+			smoothTouch: isMobile ? 0.8 : 0.1, // Higher value for smoother mobile touch
+			normalizeScroll: true, // Helps with mobile scrolling consistency
 		});
 	}, []);
 
@@ -113,7 +116,6 @@ export default function Home() {
 			journey: journeyRef,
 			experience: experienceRef,
 			projects: projectsRef,
-			testimonials: testimonialsRef,
 			contact: contactRef,
 		};
 
@@ -131,67 +133,45 @@ export default function Home() {
 	};
 
 	useEffect(() => {
-		// Use scroll-based detection for more accurate section tracking
-		// This works better with sections that have negative margins or complex layouts
-		let ticking = false;
+		// Wait for ScrollSmoother to be ready
+		const timer = setTimeout(() => {
+			const sections = [
+				{ ref: heroRef, id: "hero" as Section },
+				{ ref: aboutRef, id: "about" as Section },
+				{ ref: skillsRef, id: "skills" as Section },
+				{ ref: journeyRef, id: "journey" as Section },
+				{ ref: experienceRef, id: "experience" as Section },
+				{ ref: projectsRef, id: "projects" as Section },
+				{ ref: contactRef, id: "contact" as Section },
+			];
 
-		const handleScroll = () => {
-			if (!ticking) {
-				window.requestAnimationFrame(() => {
-					const sections = [
-						{ ref: heroRef, id: "hero" as Section },
-						{ ref: aboutRef, id: "about" as Section },
-						{ ref: skillsRef, id: "skills" as Section },
-						{ ref: journeyRef, id: "journey" as Section },
-						{ ref: experienceRef, id: "experience" as Section },
-						{ ref: projectsRef, id: "projects" as Section },
-						// { ref: testimonialsRef, id: "testimonials" as Section },
-						{ ref: contactRef, id: "contact" as Section },
-					];
+			// Create ScrollTrigger for each section to detect when it's active
+			const triggers = sections.map(({ ref, id }) => {
+				if (!ref.current) return null;
 
-					// Find the section that's closest to the top of the viewport (with offset)
-					const offset = window.innerHeight * 0.3; // 30% from top
-					let currentSectionId: Section = "hero";
-					let minDistance = Infinity;
-
-					sections.forEach(({ ref, id }) => {
-						if (ref.current) {
-							const rect = ref.current.getBoundingClientRect();
-							const distance = Math.abs(rect.top - offset);
-
-							// If this section is in view and closer to our target position
-							if (
-								rect.top < window.innerHeight &&
-								rect.bottom > 0 &&
-								distance < minDistance
-							) {
-								minDistance = distance;
-								currentSectionId = id;
-							}
+				return ScrollTrigger.create({
+					trigger: ref.current,
+					start: "top center",
+					end: "bottom center",
+					onEnter: () => {
+						if (!pendingSectionRef.current) {
+							setCurrentSection(id);
 						}
-					});
-
-					const pendingTarget = pendingSectionRef.current;
-					if (!pendingTarget || pendingTarget === currentSectionId) {
-						pendingSectionRef.current = null;
-						setCurrentSection(currentSectionId);
-					}
-					ticking = false;
+					},
+					onEnterBack: () => {
+						if (!pendingSectionRef.current) {
+							setCurrentSection(id);
+						}
+					},
 				});
+			});
 
-				ticking = true;
-			}
-		};
+			return () => {
+				triggers.forEach((trigger) => trigger?.kill());
+			};
+		}, 100);
 
-		// Initial check
-		handleScroll();
-
-		// Listen to scroll events
-		window.addEventListener("scroll", handleScroll, { passive: true });
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
+		return () => clearTimeout(timer);
 	}, []);
 
 	useEffect(() => {

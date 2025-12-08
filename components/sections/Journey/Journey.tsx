@@ -29,13 +29,13 @@ export function Journey() {
 					ease: "elastic(2.5, 1)",
 				},
 			})
-			.to(".ball02, .text01, #text-2011 ", {}, 0.04)
-			.to(".ball03, .text02, #text-2011-2 , #uoft", {}, 0.07)
-			.to(".ball04, .text03, #text-2014", {}, 0.13)
-			.to(".ball05, .text04, #text-2015", {}, 0.17)
-			.to(".ball06, .text05, #text-2016, #chair, #haircut", {}, 0.2)
+			.to(".ball02, .text01, #text-2015 ", {}, 0.04)
+			.to(".ball03, .text02, #text-2017 , #uoft", {}, 0.07)
+			.to(".ball04, .text03, #text-2019", {}, 0.13)
+			.to(".ball05, .text04, #text-2021", {}, 0.17)
+			.to(".ball06, .text05, #text-2022, #chair, #haircut", {}, 0.2)
 			.to(
-				".ball07, #text-barbering-great, #competition, #pompodour, #combover",
+				".ball07, #competition, #pompodour, #combover",
 				{},
 				0.23
 			)
@@ -243,56 +243,56 @@ export function Journey() {
 							r="20"
 						/>
 						<text
-							className="text01 invisible fill-blue-400 text-[15px]"
+							className="text01 invisible fill-blue-400 text-[11px] font-semibold"
 							x="50"
 							y="194.11"
-						>
-							2011
-						</text>
-						<text
-							className="text02 invisible fill-blue-400 text-[15px]"
-							x="50"
-							y="394.11"
-						>
-							2011
-						</text>
-						<text
-							className="text03 invisible fill-blue-400 text-[15px]"
-							x="50"
-							y="724.11"
-						>
-							2014
-						</text>
-						<text
-							className="text04 invisible fill-blue-400 text-[15px]"
-							x="50"
-							y="994.11"
 						>
 							2015
 						</text>
 						<text
-							className="text05 invisible fill-blue-400 text-[15px]"
+							className="text02 invisible fill-blue-400 text-[11px] font-semibold"
+							x="50"
+							y="394.11"
+						>
+							2017
+						</text>
+						<text
+							className="text03 invisible fill-blue-400 text-[11px] font-semibold"
+							x="50"
+							y="724.11"
+						>
+							2019
+						</text>
+						<text
+							className="text04 invisible fill-blue-400 text-[11px] font-semibold"
+							x="50"
+							y="994.11"
+						>
+							2021
+						</text>
+						<text
+							className="text05 invisible fill-blue-400 text-[11px] font-semibold"
 							x="50"
 							y="1186.31"
 						>
-							2016
+							2022
 						</text>
 						<text
-							className="text06 invisible fill-blue-400 text-[15px]"
+							className="text06 invisible fill-blue-400 text-[11px] font-semibold"
 							x="50"
 							y="1786.31"
 						>
 							2023
 						</text>
 						<text
-							className="text07 invisible fill-blue-400 text-[15px]"
+							className="text07 invisible fill-blue-400 text-[11px] font-semibold"
 							x="50"
 							y="1986.31"
 						>
 							2024
 						</text>
 						<text
-							className="text08 invisible fill-blue-400 text-[15px]"
+							className="text08 invisible fill-blue-400 text-[11px] font-semibold"
 							x="50"
 							y="2186.81"
 						>
@@ -301,68 +301,66 @@ export function Journey() {
 					</svg>
 
 					<TimelineText
-						id="text-2011"
+						id="text-2015"
 						className="left-[42%] top-[26%] md:left-[40%] md:top-[27%] lg:left-[40%] xl:left-[30%] xl:top-[27%] 2xl:left-[35%] 2xl:top-[7%]"
 					>
-						<p>Graduated from Burnaby North Secondary with the Honour Cord</p>
+						<p>Graduated from high school and enrolled at the Institute of Technology of Cambodia to study Food Engineering.</p>
 					</TimelineText>
 					<TimelineText
-						id="text-2011-2"
+						id="text-2017"
 						className="left-[45%] top-[30%] md:left-[42%] md:top-[31%] lg:left-[33%] xl:left-[30%] xl:top-[31%] 2xl:left-[37%] 2xl:top-[15%]"
 					>
-						<p>Went to the University of Toronto for Engineering</p>
+						<p>
+							Completed 2 years of study but withdrew from the program after realizing it wasn&apos;t the right path for me. Took time to explore my true passions and interests.
+						</p>
 					</TimelineText>
 					<TimelineText
-						id="text-2014"
+						id="text-2019"
 						className="left-[33%] top-[36%] md:left-[30%] md:top-[38%] lg:left-[23%] xl:left-[25%] xl:top-[38%] 2xl:left-[22%] 2xl:top-[29%]"
 					>
 						<p>
-							Completed 2 years, but withdrew from the program upon realizing it
-							wasn&apos;t for me.
+							After a 2-year gap, I decided to start fresh and applied for a scholarship at Kirirom Institute of Technology to study Software Engineering. This marked the beginning of my journey into tech.
 						</p>
 					</TimelineText>
 					<TimelineText
-						id="text-2015"
+						id="text-2021"
 						className="left-[47%] top-[41%] md:left-[42%] md:top-[42%] lg:left-[33%] lg:top-[42%] xl:left-[28%] xl:top-[42%] 2xl:left-[31%] 2xl:top-[36%]"
 					>
 						<p>
-							Enrolled and completed the Associates Certificate for Graphic
-							Design at BCIT
+							Received the Google Women in Tech Scholarship in Asia, selected as one of 50 scholars from over 7,000 applicants.
+							Joined the ASEAN Data Science Explorers Program 2021, achieving 1st place in Cambodia and 2nd place in the ASEAN region.
+							Started my first professional software development projects with a Singapore-based client.
 						</p>
 					</TimelineText>
 					<TimelineText
-						id="text-2016"
+						id="text-2022"
 						className="left-[50%] top-[45%] md:left-[46%] md:top-[45%] lg:left-[35%] lg:top-[45%] xl:left-[32%] xl:top-[45%] 2xl:left-[40%] 2xl:top-[44%]"
 					>
-						<p>Entered the world of creative barbering</p>
-					</TimelineText>
-					<TimelineText
-						id="text-barbering-great"
-						className="left-[43%] top-[50%] md:left-[40%] md:top-[49%] lg:left-[35%] lg:top-[48%] xl:left-[28%] xl:top-[49%] 2xl:left-[40%] 2xl:top-[50%]"
-					>
-						<p>
-							It was great at first. I participated in competitions, built a
-							steady clientele, became self-employed with my best month of doing
-							$9.4k in sales
-						</p>
+						<p>Ranked Top 7 in APAC Seeds for the Future 2022 program in Thailand and won the Audience Award in the Tech4Good Accelerator program by Huawei in Singapore.</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2023"
-						className="left-[57%] top-[56%] md:left-[48%] md:top-[56%] lg:left-[35%] lg:top-[53%] xl:left-[32%] xl:top-[56%] 2xl:left-[40%] 2xl:top-[67%]"
+						className="left-[43%] top-[50%] md:left-[40%] md:top-[49%] lg:left-[35%] lg:top-[48%] xl:left-[28%] xl:top-[49%] 2xl:left-[40%] 2xl:top-[50%]"
 					>
 						<p>
-							...but over time I lost the passion, felt limited in my growth,
-							and simply felt like I can achieve more elsewhere.
+							Awarded a scholarship for the NUS Entrepreneurship Summer Program in Singapore, gaining valuable experience and expanding my network.
+							Graduated from Kirirom Institute of Technology with a Bachelor&apos;s degree in Software Engineering and secured a full-time position as a Software Developer in Japan.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2024"
+						className="left-[57%] top-[56%] md:left-[48%] md:top-[56%] lg:left-[35%] lg:top-[53%] xl:left-[32%] xl:top-[56%] 2xl:left-[40%] 2xl:top-[67%]"
+					>
+						<p>
+							Relocated to Japan and began my professional career as a Software Developer, working on cutting-edge projects for Local 5G systems.
+						</p>
+					</TimelineText>
+					<TimelineText
+						id="text-2024-b"
 						className="left-[57%] top-[62%] md:left-[46%] md:top-[62%] 2xl:left-[35%] 2xl:top-[73%]"
 					>
 						<p>
-							I explored a few different paths, while keeping my barbering job.
-							Most notably I pursued cinematography where I earned a &apos;Best
-							Cinematography Award&apos; nomination at a local film festival.
+							Contributed to multiple high-impact projects, collaborating with cross-functional teams to deliver user-centered web applications. Deepened my expertise in modern web technologies and agile development practices.
 						</p>
 					</TimelineText>
 					<TimelineText
@@ -370,15 +368,10 @@ export function Journey() {
 						className="left-[57%] top-[78%] xl:top-[80%] 2xl:left-[35%] 2xl:top-[91%]"
 					>
 						<p>
-							Ultimately, I learned two things about myself after this
-							exploration phase. I love technology and creative problem solving.
-							So I dove head first in software development and after learning on
-							my own, I built and launched my mobile app Bingeable, which has a
-							real growing user base.
+							Continuing to evolve as a software engineer, embracing new challenges and technologies. Actively seeking opportunities to make meaningful contributions while growing both professionally and personally.
 						</p>
 						<p>
-							I am now looking to apply my skills and learnings at a place where
-							I can contribute and grow further...
+							Looking forward to applying my skills and experience in an environment where I can create impact and continue learning...
 						</p>
 					</TimelineText>
 				</div>
