@@ -29,7 +29,7 @@ export function Journey() {
 					ease: "elastic(2.5, 1)",
 				},
 			})
-			.to(".ball02, .text01, #text-2015 ", {}, 0.04)
+			.to(".ball02, .text01, #text-2015, #ioftc", {}, 0.04)
 			.to(".ball03, .text02, #text-2017 , #uoft", {}, 0.07)
 			.to(".ball04, .text03, #text-2019", {}, 0.13)
 			.to(".ball05, .text04, #text-2021", {}, 0.17)
@@ -89,11 +89,11 @@ export function Journey() {
 				{/* Timeline Content */}
 				<div className="relative -mt-36 w-full pb-40 md:-mt-48 lg:-mt-60 xl:-mt-72 2xl:mt-0">
 					<TimelinePic
-						id="uoft"
-						src="/uoft.jpg"
+						id="ioftc"
+						src="/ioftc.JPG"
 						width={150}
 						height={150}
-						alt="university-of-toronto"
+						alt="institute-of-technology-of-cambodia"
 						className="left-[79%] top-[30%] w-[50px] rotate-6 md:left-[85%] md:top-[31%] lg:left-[73%] lg:w-[100px] xl:left-[70%] xl:top-[30%] 2xl:left-[65%] 2xl:top-[15%] 2xl:w-[150px]"
 					/>
 					<TimelinePic
