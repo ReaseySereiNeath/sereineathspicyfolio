@@ -24,7 +24,8 @@ export function TimelinePic({
 			width={width}
 			height={height}
 			alt={alt}
-			className={`absolute scale-[0.6] overflow-hidden rounded-lg border-2 border-[#0e0e0e] opacity-0 transition-all duration-300 md:border-[5px] lg:scale-100 ${className}`}
+			className={`absolute overflow-hidden rounded-lg border-2 border-[#0e0e0e] opacity-0 object-cover shadow-lg transition-all duration-300 md:border-[3px] lg:border-[4px] ${className}`}
+			style={{ borderRadius: "0.5rem" }}
 		/>
 	);
 }

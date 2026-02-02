@@ -30,21 +30,13 @@ export function Journey() {
 				},
 			})
 			.to(".ball02, .text01, #text-2015, #ioftc", {}, 0.04)
-			.to(".ball03, .text02, #text-2017 , #uoft", {}, 0.07)
-			.to(".ball04, .text03, #text-2019", {}, 0.13)
-			.to(".ball05, .text04, #text-2021", {}, 0.17)
-			.to(".ball06, .text05, #text-2022, #chair, #haircut", {}, 0.2)
-			.to(
-				".ball07, #competition, #pompodour, #combover",
-				{},
-				0.23
-			)
-			.to(".ball08, .text06, #text-2023", {}, 0.42)
-			.to(
-				".ball09, .text07, #text-2024, #camera-op, #still-1, #still-2, #still-3",
-				{},
-				0.54
-			)
+			.to(".ball03, .text02, #text-2017, #online_google", {}, 0.07)
+			.to(".ball04, .text03, #text-2019, #team_3", {}, 0.13)
+			.to(".ball05, .text04, #text-2021, #win_seeds, #google_alone", {}, 0.17)
+			.to(".ball06, .text05, #text-2022, #asean_team", {}, 0.2)
+			.to(".ball07, .text06, #text-2023", {}, 0.23)
+			.to(".ball08, .text07, #text-2024, #graduated", {}, 0.42)
+			.to(".ball09, .text07, #text-2024-b, #life_japan, #shopie, #team_google", {}, 0.54)
 			.to(".ball10, .text08, #text-2025", {}, 0.62);
 
 		gsap
@@ -53,7 +45,7 @@ export function Journey() {
 				scrollTrigger: {
 					trigger: "#svg-stage",
 					scrub: true,
-					start: "top 10% ",
+					start: "top 30%",
 					end: "bottom top",
 				},
 			})
@@ -87,93 +79,93 @@ export function Journey() {
 				/>
 
 				{/* Timeline Content */}
-				<div className="relative -mt-36 w-full pb-40 md:-mt-48 lg:-mt-60 xl:-mt-72 2xl:mt-0">
+				<div className="relative -mt-20 w-full pb-40 md:-mt-48 lg:-mt-36 xl:-mt-52 2xl:mt-0">
 					<TimelinePic
 						id="ioftc"
 						src="/ioftc.JPG"
 						width={150}
 						height={150}
 						alt="institute-of-technology-of-cambodia"
-						className="left-[79%] top-[30%] w-[50px] rotate-6 md:left-[85%] md:top-[31%] lg:left-[73%] lg:w-[100px] xl:left-[70%] xl:top-[30%] 2xl:left-[65%] 2xl:top-[15%] 2xl:w-[150px]"
+						className="left-[75%] top-[17%] h-auto w-[55px] rotate-6 sm:left-[72%] sm:top-[17%] sm:w-[65px] md:left-[85%] md:top-[16.5%] md:w-[80px] lg:left-[83%] lg:top-[15%] lg:w-[110px] xl:left-[70%] xl:top-[16%] xl:w-[130px] 2xl:left-[70%] 2xl:top-[8%] 2xl:w-[150px]"
 					/>
 					<TimelinePic
-						id="chair"
-						src="/shop-3.jpg"
+						id="online_google"
+						src="/online_google.png"
 						width={120}
 						height={120}
-						alt="barber-chair"
-						className="left-[68%] top-[46.5%] w-[45px] -rotate-3 md:left-[80%] md:top-[45%] lg:left-[76%] lg:top-[44%] lg:w-[100px] xl:left-[68%] xl:top-[45%] 2xl:left-[63%] 2xl:top-[43%] 2xl:w-[120px]"
+						alt="google-scholarship"
+						className="left-[75%] top-[28%] h-auto w-[45px] -rotate-3 sm:left-[64%] sm:top-[36%] sm:w-[60px] md:left-[76%] md:top-[30%] md:w-[75px] lg:left-[70%] lg:top-[28%] lg:w-[95px] xl:left-[69%] xl:top-[30%] xl:w-[105px] 2xl:left-[60%] 2xl:top-[20%] 2xl:w-[120px]"
 					/>
 					<TimelinePic
-						id="haircut"
-						src="/haircut.jpg"
+						id="team_3"
+						src="/team_3.png"
 						width={120}
 						height={120}
-						alt="haircut-1"
-						className="left-[80%] top-[47%] w-[40px] rotate-3 md:left-[85%] md:top-[47.5%] lg:left-[85%] lg:top-[49%] lg:w-[90px] xl:left-[78%] 2xl:left-[75%] 2xl:w-[120px]"
+						alt="team-3"
+						className="left-[85%] top-[31.5%] h-auto w-[40px] rotate-3 sm:left-[74%] sm:top-[37.5%] sm:w-[52px] md:left-[88%] md:top-[34%] md:w-[65px] lg:left-[80%] lg:top-[32%] lg:w-[88px] xl:left-[78%] xl:top-[35%] xl:w-[98px] 2xl:left-[70%] 2xl:top-[25%] 2xl:w-[120px]"
 					/>
 					<TimelinePic
-						id="pompodour"
-						src="/pompodour.jpg"
+						id="win_seeds"
+						src="/win_seeds.png"
 						width={120}
 						height={120}
-						alt="haircut-2"
-						className="left-[800px] top-[1520px] hidden 2xl:flex"
+						alt="win-seeds"
+						className="hidden h-auto rotate-2 lg:left-[90%] lg:top-[36%] lg:w-[85px] xl:left-[89%] xl:top-[38%] xl:w-[95px] 2xl:left-[85%] 2xl:top-[30%] 2xl:w-[150px] lg:block"
 					/>
 					<TimelinePic
-						id="combover"
-						src="/combover.jpg"
+						id="google_alone"
+						src="/google_alone.png"
 						width={120}
 						height={120}
-						alt="haircut-3"
-						className="-rotate-5 left-[1000px] top-[1530px] hidden 2xl:flex"
+						alt="google-alone"
+						className="hidden h-auto -rotate-5 lg:left-[93%] lg:top-[47%] lg:w-[75px] xl:left-[88%] xl:top-[48%] xl:w-[105px] 2xl:left-[90%] 2xl:top-[45%] 2xl:w-[140px] lg:block"
 					/>
 					<TimelinePic
-						id="competition"
-						src="/competition.jpg"
+						id="asean_team"
+						src="/asean_team.png"
 						width={120}
 						height={120}
-						alt="competition"
-						className="rotate-5 left-[1200px] top-[1500px] hidden 2xl:flex"
+						alt="team-google"
+						className="hidden h-auto rotate-5 lg:left-[84%] lg:top-[50%] lg:w-[70px] xl:left-[76%] xl:top-[52%] xl:w-[100px] 2xl:left-[75%] 2xl:top-[50%] 2xl:w-[130px] lg:block"
 					/>
 					<TimelinePic
-						id="camera-op"
-						src="/camera-operating.jpg"
+						id="graduated"
+						src="/graduated.png"
 						width={120}
 						height={120}
-						alt="camera-operating"
-						className="-rotate-5 left-[15%] top-[65%] w-[45px] md:w-[70px] lg:w-[90px] 2xl:left-[62%] 2xl:top-[72%]"
+						alt="asean-team"
+						className="-rotate-5 left-[12%] top-[72%] h-auto w-[70px] sm:left-[14%] sm:top-[66%] sm:w-[60px] md:left-[10%] md:top-[76%] md:w-[90px] lg:left-[3%] lg:top-[76%] lg:w-[95px] xl:left-[5%] xl:top-[76%] xl:w-[115px] 2xl:left-[75%] 2xl:top-[73%] 2xl:w-[180px]"
 					/>
 					<TimelinePic
-						id="still-1"
-						src="/still-5.jpg"
+						id="life_japan"
+						src="/life_japan.png"
 						width={180}
 						height={180}
 						alt="film-still-1"
-						className="left-[29%] top-[70%] w-[80px] rotate-6 md:top-[70%] md:w-[120px] lg:w-[150px] xl:w-[180px] 2xl:left-[35%] 2xl:top-[80%]"
+						className="left-[35%] top-[75%] h-auto w-[50px] rotate-6 sm:left-[24%] sm:top-[70%] sm:w-[70px] md:left-[30%] md:top-[78%] md:w-[70px] lg:left-[20%] lg:top-[79%] lg:w-[80px] xl:left-[20%] xl:top-[%] xl:w-[100px] 2xl:left-[35%] 2xl:top-[81%] 2xl:w-[110px]"
 					/>
 					<TimelinePic
-						id="still-2"
-						src="/still-6.jpg"
+						id="shopie"
+						src="/shopie.png"
 						width={180}
 						height={180}
-						alt="film-still-2"
-						className="left-[45%] top-[70%] hidden rotate-6 md:left-[40%] md:top-[70%] md:block md:w-[120px] lg:w-[140px] xl:w-[180px] 2xl:left-[50%] 2xl:top-[79%]"
+						alt="shopie"
+						className="left-[40%] top-[70.5%] hidden h-auto rotate-6 md:left-[50%] md:top-[80%] md:w-[120px] lg:left-[39%] lg:top-[82%] lg:w-[130px] xl:left-[40%] xl:top-[78%] xl:w-[170px] 2xl:left-[53%] 2xl:top-[81%] 2xl:w-[180px] md:block"
 					/>
 					<TimelinePic
-						id="still-3"
-						src="/best-cine.png"
+						id="team_google"
+						src="/team_google.png"
 						width={250}
 						height={250}
 						alt="film-still-3"
-						className="left-[60%] top-[69%] w-[90px] -rotate-3 md:left-[65%] md:top-[68%] md:w-[140px] lg:w-[200px] xl:w-[250px] 2xl:left-[70%] 2xl:top-[78%]"
+						className="left-[60%] top-[73%] h-auto w-[75px] -rotate-3 sm:left-[58%] sm:top-[69.5%] sm:w-[110px] md:left-[74%] md:top-[77%] md:w-[130px] lg:left-[67%] lg:top-[80%] lg:w-[155px] xl:left-[70%] xl:top-[75%] xl:w-[205px] 2xl:left-[78%] 2xl:top-[82%] 2xl:w-[200px]"
 					/>
 
 					<svg
 						id="svg-stage"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 600 2526.3"
-						className="mt-0 max-w-[600px] origin-left scale-50 overflow-visible 2xl:scale-100"
+						className="mt-0 max-w-[600px] origin-left scale-[0.70] overflow-visible md:scale-75 2xl:scale-100"
 					>
 						<path
 							className="theLine stroke-blue-500"
@@ -203,7 +195,7 @@ export function Journey() {
 						<circle
 							className="ball ball04 invisible fill-blue-500 opacity-0 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]"
 							cx="130.3"
-							cy="799"
+							cy="760"
 							r="20"
 						/>
 						<circle
@@ -244,56 +236,56 @@ export function Journey() {
 						/>
 						<text
 							className="text01 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
+							x="40"
 							y="194.11"
 						>
 							2015
 						</text>
 						<text
 							className="text02 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
+							x="40"
 							y="394.11"
 						>
 							2017
 						</text>
 						<text
 							className="text03 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
+							x="40"
 							y="724.11"
 						>
 							2019
 						</text>
 						<text
 							className="text04 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
+							x="40"
 							y="994.11"
 						>
 							2021
 						</text>
 						<text
 							className="text05 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
+							x="40"
 							y="1186.31"
 						>
 							2022
 						</text>
 						<text
 							className="text06 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
-							y="1786.31"
+							x="40"
+							y="1440.31"
 						>
 							2023
 						</text>
 						<text
 							className="text07 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
-							y="1986.31"
+							x="40"
+							y="1895.31"
 						>
 							2024
 						</text>
 						<text
 							className="text08 invisible fill-blue-400 text-[11px] font-semibold"
-							x="50"
+							x="40"
 							y="2186.81"
 						>
 							2025
@@ -302,76 +294,99 @@ export function Journey() {
 
 					<TimelineText
 						id="text-2015"
-						className="left-[42%] top-[26%] md:left-[40%] md:top-[27%] lg:left-[40%] xl:left-[30%] xl:top-[27%] 2xl:left-[35%] 2xl:top-[7%]"
+						className="left-[55%] top-[18%] md:left-[57%] md:top-[17%] lg:left-[45%] lg:top-[16%] xl:left-[35%] xl:top-[17%] 2xl:left-[35%] 2xl:top-[6%]"
 					>
-						<p>Graduated from high school and enrolled at the Institute of Technology of Cambodia to study Food Engineering.</p>
+						<p>
+							Graduated from high school and enrolled at the Institute of
+							Technology of Cambodia to study Chemical and Food Engineering.
+						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2017"
-						className="left-[45%] top-[30%] md:left-[42%] md:top-[31%] lg:left-[33%] xl:left-[30%] xl:top-[31%] 2xl:left-[37%] 2xl:top-[15%]"
+						className="left-[58%] top-[23%] md:left-[59%] md:top-[22%] lg:left-[48%] lg:top-[22%] xl:left-[37%] xl:top-[22%] 2xl:left-[39%] 2xl:top-[14%]"
 					>
 						<p>
-							Completed 2 years of study but withdrew from the program after realizing it wasn&apos;t the right path for me. Took time to explore my true passions and interests.
+							Completed 2 years of study but withdrew from the program after
+							realizing it wasn&apos;t the right path for me. Took time to
+							explore my true passions and interests.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2019"
-						className="left-[33%] top-[36%] md:left-[30%] md:top-[38%] lg:left-[23%] xl:left-[25%] xl:top-[38%] 2xl:left-[22%] 2xl:top-[29%]"
+						className="left-[36%] top-[31%] md:left-[40%] md:top-[32%] lg:left-[29%] xl:left-[25%] xl:top-[32%] 2xl:left-[27%] 2xl:top-[26%]"
 					>
 						<p>
-							After a 2-year gap, I decided to start fresh and applied for a scholarship at Kirirom Institute of Technology to study Software Engineering. This marked the beginning of my journey into tech.
+							After a 2-year gap, I decided to start fresh and applied for a
+							scholarship at Kirirom Institute of Technology to study Software
+							Engineering. This marked the beginning of my journey into tech.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2021"
-						className="left-[47%] top-[41%] md:left-[42%] md:top-[42%] lg:left-[33%] lg:top-[42%] xl:left-[28%] xl:top-[42%] 2xl:left-[31%] 2xl:top-[36%]"
+						className="left-[58%] top-[36%] md:left-[58%] md:top-[38%] lg:left-[48%] lg:top-[39%] xl:left-[35%] xl:top-[38%] 2xl:left-[40%] 2xl:top-[34%]"
 					>
 						<p>
-							Received the Google Women in Tech Scholarship in Asia, selected as one of 50 scholars from over 7,000 applicants.
-							Joined the ASEAN Data Science Explorers Program 2021, achieving 1st place in Cambodia and 2nd place in the ASEAN region.
-							Started my first professional software development projects with a Singapore-based client.
+							Received the Google Women in Tech Scholarship (1 of 50 from 7,000+
+							applicants). Achieved 1st in Cambodia and 2nd in ASEAN for the
+							Data Science Explorers Program. Started professional software
+							development with a Singapore-based client.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2022"
-						className="left-[50%] top-[45%] md:left-[46%] md:top-[45%] lg:left-[35%] lg:top-[45%] xl:left-[32%] xl:top-[45%] 2xl:left-[40%] 2xl:top-[44%]"
+						className="left-[65%] top-[42%] md:left-[62%] md:top-[44%] lg:left-[53%] lg:top-[44%] xl:left-[40%] xl:top-[44%] 2xl:left-[45%] 2xl:top-[44%]"
 					>
-						<p>Ranked Top 7 in APAC Seeds for the Future 2022 program in Thailand and won the Audience Award in the Tech4Good Accelerator program by Huawei in Singapore.</p>
+						<p>
+							Ranked Top 7 in APAC Seeds for the Future program in Thailand and
+							won the Audience Award in the Tech4Good Accelerator program by
+							Huawei in Singapore.
+						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2023"
-						className="left-[43%] top-[50%] md:left-[40%] md:top-[49%] lg:left-[35%] lg:top-[48%] xl:left-[28%] xl:top-[49%] 2xl:left-[40%] 2xl:top-[50%]"
+						className="left-[43%] top-[50%] md:left-[58%] md:top-[50%] lg:left-[48%] lg:top-[50%] xl:left-[38%] xl:top-[50%] 2xl:left-[40%] 2xl:top-[53%]"
 					>
 						<p>
-							Awarded a scholarship for the NUS Entrepreneurship Summer Program in Singapore, gaining valuable experience and expanding my network.
-							Graduated from Kirirom Institute of Technology with a Bachelor&apos;s degree in Software Engineering and secured a full-time position as a Software Developer in Japan.
+							Awarded a scholarship for the NUS Entrepreneurship Summer Program
+							in Singapore, gaining valuable experience and expanding my
+							network. Graduated from Kirirom Institute of Technology with a
+							Bachelor&apos;s degree in Software Engineering and secured a
+							full-time position as a Software Developer in Japan.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2024"
-						className="left-[57%] top-[56%] md:left-[48%] md:top-[56%] lg:left-[35%] lg:top-[53%] xl:left-[32%] xl:top-[56%] 2xl:left-[40%] 2xl:top-[67%]"
+						className="left-[68%] top-[57%] md:left-[73%] md:top-[61%] lg:left-[62%] lg:top-[61%] xl:left-[46%] xl:top-[61%] 2xl:left-[55%] 2xl:top-[66%]"
 					>
 						<p>
-							Relocated to Japan and began my professional career as a Software Developer, working on cutting-edge projects for Local 5G systems.
+							Relocated to Japan and began my professional career as a Software
+							Developer, working on cutting-edge projects for Local 5G systems.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2024-b"
-						className="left-[57%] top-[62%] md:left-[46%] md:top-[62%] 2xl:left-[35%] 2xl:top-[73%]"
+						className="left-[57%] top-[63%] md:left-[62%] md:top-[67%] lg:left-[50%] lg:top-[66%] xl:left-[40%] xl:top-[66%] 2xl:left-[40%] 2xl:top-[73%]"
 					>
 						<p>
-							Contributed to multiple high-impact projects, collaborating with cross-functional teams to deliver user-centered web applications. Deepened my expertise in modern web technologies and agile development practices.
+							Contributed to multiple high-impact projects, collaborating with
+							cross-functional teams to deliver user-centered web applications.
+							Deepened my expertise in modern web technologies and agile
+							development practices.
 						</p>
 					</TimelineText>
 					<TimelineText
 						id="text-2025"
-						className="left-[57%] top-[78%] xl:top-[80%] 2xl:left-[35%] 2xl:top-[91%]"
+						className="left-[40%] top-[85%] md:left-[30%] md:top-[88%] xl:left-[20%] xl:top-[93%] 2xl:left-[25%] 2xl:top-[95%]"
 					>
 						<p>
-							Continuing to evolve as a software engineer, embracing new challenges and technologies. Actively seeking opportunities to make meaningful contributions while growing both professionally and personally.
+							Continuing to evolve as a software engineer, embracing new
+							challenges and technologies. Actively seeking opportunities to
+							make meaningful contributions while growing both professionally
+							and personally.
 						</p>
 						<p>
-							Looking forward to applying my skills and experience in an environment where I can create impact and continue learning...
+							Looking forward to applying my skills and experience in an
+							environment where I can create impact and continue learning...
 						</p>
 					</TimelineText>
 				</div>
