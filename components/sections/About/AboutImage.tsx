@@ -3,6 +3,7 @@
 import { useScrollReveal } from "@/lib/hooks/useScrollReveal";
 import { parallaxScroll } from "@/lib/utils/animations";
 import { gsap } from "@/lib/utils/gsap-config";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export function AboutImage() {
@@ -45,11 +46,16 @@ export function AboutImage() {
 						/>
 					</div>
 
-					{/* Profile image placeholder */}
-					<div className="relative z-10 mb-6 flex h-48 w-48 items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-blue-400/20">
-						<div className="flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-gray-900 text-6xl">
-							👨‍💻
-						</div>
+					{/* Profile image */}
+					<div className="relative z-10 overflow-hidden rounded-2xl">
+						<Image
+							src="/about-me.png"
+							alt="About me - Developer at work"
+							width={350}
+							height={350}
+							className="object-cover"
+							priority
+						/>
 					</div>
 
 					<div ref={decorativeRef} className="absolute right-8 top-1/4">

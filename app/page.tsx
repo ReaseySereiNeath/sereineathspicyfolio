@@ -133,6 +133,31 @@ export default function Home() {
 	};
 
 	useEffect(() => {
+		if (typeof window === "undefined") return;
+		const prevRestoration = history.scrollRestoration;
+		history.scrollRestoration = "manual";
+
+		const scrollToTop = () => {
+			if (smootherRef.current) {
+				smootherRef.current.scrollTo(0, false);
+			} else {
+				window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+			}
+		};
+
+		scrollToTop();
+		const timer = setTimeout(scrollToTop, 120);
+
+		setCurrentSection("hero");
+		pendingSectionRef.current = null;
+
+		return () => {
+			clearTimeout(timer);
+			history.scrollRestoration = prevRestoration || "auto";
+		};
+	}, []);
+
+	useEffect(() => {
 		// Wait for ScrollSmoother to be ready
 		const timer = setTimeout(() => {
 			const sections = [

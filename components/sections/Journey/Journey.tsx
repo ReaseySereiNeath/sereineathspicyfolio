@@ -68,7 +68,7 @@ export function Journey() {
 	return (
 		<div
 			ref={containerRef}
-			className="flex size-full items-center justify-center px-4 py-16 sm:px-8 md:px-16 md:py-20 lg:px-24"
+			className="flex size-full items-center justify-center bg-black px-4 py-16 sm:px-8 md:px-16 md:py-20 lg:px-24"
 		>
 			<div className="w-full max-w-7xl">
 				{/* Header */}
@@ -86,6 +86,7 @@ export function Journey() {
 						width={150}
 						height={150}
 						alt="institute-of-technology-of-cambodia"
+						priority
 						className="left-[75%] top-[17%] h-auto w-[55px] rotate-6 sm:left-[72%] sm:top-[17%] sm:w-[65px] md:left-[85%] md:top-[16.5%] md:w-[80px] lg:left-[83%] lg:top-[15%] lg:w-[110px] xl:left-[70%] xl:top-[16%] xl:w-[130px] 2xl:left-[70%] 2xl:top-[8%] 2xl:w-[150px]"
 					/>
 					<TimelinePic
@@ -94,6 +95,7 @@ export function Journey() {
 						width={120}
 						height={120}
 						alt="google-scholarship"
+						priority
 						className="left-[75%] top-[28%] h-auto w-[45px] -rotate-3 sm:left-[64%] sm:top-[36%] sm:w-[60px] md:left-[76%] md:top-[30%] md:w-[75px] lg:left-[70%] lg:top-[28%] lg:w-[95px] xl:left-[69%] xl:top-[30%] xl:w-[105px] 2xl:left-[60%] 2xl:top-[20%] 2xl:w-[120px]"
 					/>
 					<TimelinePic
@@ -107,32 +109,32 @@ export function Journey() {
 					<TimelinePic
 						id="win_seeds"
 						src="/win_seeds.png"
-						width={120}
-						height={120}
+						width={150}
+						height={150}
 						alt="win-seeds"
 						className="hidden h-auto rotate-2 lg:left-[90%] lg:top-[36%] lg:w-[85px] xl:left-[89%] xl:top-[38%] xl:w-[95px] 2xl:left-[85%] 2xl:top-[30%] 2xl:w-[150px] lg:block"
 					/>
 					<TimelinePic
 						id="google_alone"
 						src="/google_alone.png"
-						width={120}
-						height={120}
+						width={140}
+						height={140}
 						alt="google-alone"
 						className="hidden h-auto -rotate-5 lg:left-[93%] lg:top-[47%] lg:w-[75px] xl:left-[88%] xl:top-[48%] xl:w-[105px] 2xl:left-[90%] 2xl:top-[45%] 2xl:w-[140px] lg:block"
 					/>
 					<TimelinePic
 						id="asean_team"
 						src="/asean_team.png"
-						width={120}
-						height={120}
+						width={130}
+						height={130}
 						alt="team-google"
 						className="hidden h-auto rotate-5 lg:left-[84%] lg:top-[50%] lg:w-[70px] xl:left-[76%] xl:top-[52%] xl:w-[100px] 2xl:left-[75%] 2xl:top-[50%] 2xl:w-[130px] lg:block"
 					/>
 					<TimelinePic
 						id="graduated"
 						src="/graduated.png"
-						width={120}
-						height={120}
+						width={180}
+						height={180}
 						alt="asean-team"
 						className="-rotate-5 left-[12%] top-[72%] h-auto w-[70px] sm:left-[14%] sm:top-[66%] sm:w-[60px] md:left-[10%] md:top-[76%] md:w-[90px] lg:left-[3%] lg:top-[76%] lg:w-[95px] xl:left-[5%] xl:top-[76%] xl:w-[115px] 2xl:left-[75%] 2xl:top-[73%] 2xl:w-[180px]"
 					/>
