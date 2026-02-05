@@ -8,13 +8,19 @@ import { useEffect, useRef, useState } from "react";
 
 export function Navigation({ currentSection, onNavigate }: NavigationProps) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [activeSection, setActiveSection] = useState<Section>(currentSection);
 	const mobileMenuRef = useRef<HTMLDivElement>(null);
 	const menuButtonRef = useRef<HTMLButtonElement>(null);
 
 	const handleNavigate = (section: Section) => {
+		setActiveSection(section);
 		onNavigate(section);
 		setIsOpen(false);
 	};
+
+	useEffect(() => {
+		setActiveSection(currentSection);
+	}, [currentSection]);
 
 	useEffect(() => {
 		// Set initial states to hidden
@@ -108,7 +114,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
 									});
 								}}
 								className={`mobile-nav-item relative z-10 text-lg tracking-widest transition-all duration-300 ${
-									currentSection === item.id
+									activeSection === item.id
 										? "bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text font-semibold text-transparent"
 										: "text-gray-400 hover:text-white"
 								} `}

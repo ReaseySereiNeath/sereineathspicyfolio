@@ -12,28 +12,35 @@ export function AboutStats() {
 		if (!container) return;
 
 		const ctx = gsap.context(() => {
+			const statCards = Array.from(container.children);
+
 			// Stats animation
-			gsap.from(container.children, {
-				opacity: 0,
-				y: 20,
-				scale: 0.9,
-				duration: 0.6,
-				stagger: 0.1,
-				scrollTrigger: {
-					trigger: container,
-					start: "top 85%",
-					toggleActions: "play none none reverse",
-				},
-			});
+			gsap.fromTo(
+				statCards,
+				{ opacity: 0, y: 20, scale: 0.9 },
+				{
+					opacity: 1,
+					y: 0,
+					scale: 1,
+					duration: 0.6,
+					stagger: 0.12,
+					ease: "power2.out",
+					immediateRender: false,
+					scrollTrigger: {
+						trigger: container,
+						start: "top 85%",
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
 
 			// Stats hover effect setup
-			const statCards = container.children;
-			Array.from(statCards).forEach((card) => {
+			statCards.forEach((card) => {
 				const element = card as HTMLElement;
 				element.addEventListener("mouseenter", () => {
 					gsap.to(element, {
 						scale: 1.05,
-						borderColor: "rgba(59, 130, 246, 0.5)",
+						borderColor: "rgba(59, 130, 246, 0.4)",
 						duration: 0.3,
 						ease: "power2.out",
 					});
@@ -41,7 +48,7 @@ export function AboutStats() {
 				element.addEventListener("mouseleave", () => {
 					gsap.to(element, {
 						scale: 1,
-						borderColor: "rgba(59, 130, 246, 0.1)",
+						borderColor: "rgba(229, 231, 235, 1)",
 						duration: 0.3,
 						ease: "power2.out",
 					});
@@ -57,10 +64,10 @@ export function AboutStats() {
 			{stats.map((stat, index) => (
 				<div
 					key={index}
-					className="cursor-default rounded-xl border border-blue-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-4 backdrop-blur-sm transition-all duration-300"
+					className="cursor-default rounded-xl border border-gray-200 bg-gray-50 p-4 transition-all duration-300"
 				>
-					<stat.icon className="mb-2 h-6 w-6 text-blue-400" />
-					<div className="mb-1 bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-2xl text-transparent md:text-3xl">
+					<stat.icon className="mb-2 h-6 w-6 text-blue-600" />
+					<div className="mb-1 text-lg font-semibold text-gray-900 md:text-xl">
 						{stat.value}
 					</div>
 					<div className="text-xs text-gray-500 md:text-sm">{stat.label}</div>

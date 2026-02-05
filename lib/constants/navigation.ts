@@ -15,7 +15,7 @@ export const SECTIONS: readonly Section[] = [
 	"journey",
 	"experience",
 	"projects",
-	"testimonials",
+	// "testimonials",
 	"contact",
 ] as const;
 
@@ -30,7 +30,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
 	{ id: "journey", label: "JOURNEY" },
 	{ id: "experience", label: "EXPERIENCE" },
 	{ id: "projects", label: "PROJECTS" },
-	{ id: "testimonials", label: "TESTIMONIALS" },
+	// { id: "testimonials", label: "TESTIMONIALS" },
 	{ id: "contact", label: "CONTACT" },
 ] as const;
 
@@ -44,6 +44,6 @@ export const SECTION_NAMES: Readonly<Record<Section, string>> = {
 	journey: "Journey",
 	experience: "Experience",
 	projects: "Projects",
-	testimonials: "Testimonials",
+	// testimonials: "Testimonials",
 	contact: "Contact",
 } as const;

@@ -13,7 +13,7 @@ export type Section =
 	| "journey"
 	| "experience"
 	| "projects"
-	| "testimonials"
+	// | "testimonials"
 	| "contact";
 
 /**

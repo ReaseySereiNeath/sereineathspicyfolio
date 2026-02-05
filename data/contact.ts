@@ -5,19 +5,19 @@ export const contactMethods: ContactMethod[] = [
 	{
 		icon: Mail,
 		label: "Email",
-		value: "reasey@example.com",
-		href: "mailto:reasey@example.com",
+		value: "sereineathreasey@gmail.com",
+		href: "mailto:sereineathreasey@gmail.com",
 	},
 	{
 		icon: Phone,
 		label: "Phone",
-		value: "+65 1234 5678",
-		href: "tel:+6512345678",
+		value: "+81 70-8975-3286",
+		href: "tel:+817089753286",
 	},
 	{
 		icon: MapPin,
 		label: "Location",
-		value: "Singapore",
+		value: "Japan",
 		href: null,
 	},
 ];
@@ -41,4 +41,6 @@ export const socialLinks: SocialLink[] = [
 		href: "https://twitter.com",
 		color: "hover:text-cyan-400",
 	},
+	
+	
 ];

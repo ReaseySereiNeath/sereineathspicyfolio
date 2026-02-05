@@ -11,7 +11,7 @@ export function Projects() {
 	return (
 		<div
 			ref={containerRef}
-			className="flex size-full items-center justify-center px-4 py-16 sm:px-8 md:px-16 md:py-20 lg:px-24"
+			className="flex size-full items-center justify-center bg-black px-4 py-16 sm:px-8 md:px-16 md:py-20 lg:px-24"
 		>
 			<div className="w-full max-w-7xl">
 				{/* Header */}

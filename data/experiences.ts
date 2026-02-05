@@ -3,26 +3,26 @@ import { Experience } from "@/lib/types";
 export const experiences: Experience[] = [
 	{
 		title: "Full-Stack Engineer",
-		company: "U.S.-based Startup",
+		company: "HYTEC INTER CO., Ltd.",
 		period: "2023 - Present",
-		location: "Singapore",
+		location: "Japan",
 		description:
-			"Building modern, user-centered web applications with diverse, team-oriented environments. Leading development of scalable solutions.",
+			"Build the full lifecycle development of a responsive, in-house web application for 5G system management, replacing manual network scripts with an automated, real-time platform.",
 	},
 	{
-		title: "Freelance Developer",
-		company: "Singapore-based Company",
+		title: "Software Developer(Freelance)",
+		company: "GGMT PTE. LTD.",
 		period: "2021 - 2023",
-		location: "Remote from Cambodia",
+		location: "Singapore(Remote from Cambodia)",
 		description:
-			"Delivered high-quality solutions using agile development practices with a small team. Managed multiple client projects simultaneously.",
+			"Built a real-time dashboard to visualize sensor-based movement data for motion-tracking applications, transforming complex raw data into actionable insights.",
 	},
 	{
-		title: "Software Developer",
-		company: "Small Startup",
-		period: "2020 - 2021",
-		location: "University",
+		title: "Softeware Engineering",
+		company: "KIRIROM INCUBATION CENTER (INTERNSHIP)",
+		period: "2020 - 2023",
+		location: "Cambodia(University Internship)",
 		description:
-			"School-recommended opportunity working with Chinese clients, gaining early hands-on experience in software development.",
+			"School-recommended opportunity working with Japanese clients, gaining early hands-on experience in software development. Led a cross-functional team in designing and developing immersive Metaverse and VR/AR applications, driving innovation in interactive training and digital visualization experiences.",
 	},
 ];

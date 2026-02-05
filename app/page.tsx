@@ -5,7 +5,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { LoadingSpinner } from "@/components/ui";
 import type { Section } from "@/lib/types";
-import { gsap, ScrollSmoother } from "@/lib/utils/gsap-config";
+import { gsap, ScrollSmoother, ScrollTrigger } from "@/lib/utils/gsap-config";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
@@ -61,15 +61,15 @@ const Projects = dynamic(
 	}
 );
 
-const Testimonials = dynamic(
-	() =>
-		import("@/components/sections/Testimonials/Testimonials").then((mod) => ({
-			default: mod.Testimonials,
-		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
-);
+// const Testimonials = dynamic(
+// 	() =>
+// 		import("@/components/sections/Testimonials/Testimonials").then((mod) => ({
+// 			default: mod.Testimonials,
+// 		})),
+// 	{
+// 		loading: () => <LoadingSpinner fullScreen />,
+// 	}
+// );
 
 const Contact = dynamic(
 	() =>
@@ -83,6 +83,7 @@ const Contact = dynamic(
 
 export default function Home() {
 	const [currentSection, setCurrentSection] = useState<Section>("hero");
+	const pendingSectionRef = useRef<Section | null>(null);
 	const smootherRef = useRef<ScrollSmoother | null>(null);
 	const heroRef = useRef<HTMLDivElement>(null);
 	const aboutRef = useRef<HTMLDivElement>(null);
@@ -90,17 +91,20 @@ export default function Home() {
 	const journeyRef = useRef<HTMLDivElement>(null);
 	const experienceRef = useRef<HTMLDivElement>(null);
 	const projectsRef = useRef<HTMLDivElement>(null);
-	const testimonialsRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 	const orb1Ref = useRef<HTMLDivElement>(null);
 	const orb2Ref = useRef<HTMLDivElement>(null);
 
 	// Initialize ScrollSmoother
 	useGSAP(() => {
+		// Check if device is mobile/touch device
+		const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 		smootherRef.current = ScrollSmoother.create({
-			smooth: 2,
+			smooth: isMobile ? 1 : 2, // Less smoothing on mobile for better performance
 			effects: true,
-			smoothTouch: 0.1,
+			smoothTouch: isMobile ? 0.8 : 0.1, // Higher value for smoother mobile touch
+			normalizeScroll: true, // Helps with mobile scrolling consistency
 		});
 	}, []);
 
@@ -112,74 +116,87 @@ export default function Home() {
 			journey: journeyRef,
 			experience: experienceRef,
 			projects: projectsRef,
-			testimonials: testimonialsRef,
 			contact: contactRef,
 		};
 
 		const targetElement = refs[section].current;
-		if (targetElement && smootherRef.current) {
-			smootherRef.current.scrollTo(targetElement, true, "top top");
+		if (targetElement) {
+			if (smootherRef.current) {
+				smootherRef.current.scrollTo(targetElement, true, "top top");
+			} else {
+				targetElement.scrollIntoView({ behavior: "smooth" });
+			}
 		}
+
+		setCurrentSection(section);
+		pendingSectionRef.current = section;
 	};
 
 	useEffect(() => {
-		// Use scroll-based detection for more accurate section tracking
-		// This works better with sections that have negative margins or complex layouts
-		let ticking = false;
+		if (typeof window === "undefined") return;
+		const prevRestoration = history.scrollRestoration;
+		history.scrollRestoration = "manual";
 
-		const handleScroll = () => {
-			if (!ticking) {
-				window.requestAnimationFrame(() => {
-					const sections = [
-						{ ref: heroRef, id: "hero" as Section },
-						{ ref: aboutRef, id: "about" as Section },
-						{ ref: skillsRef, id: "skills" as Section },
-						{ ref: journeyRef, id: "journey" as Section },
-						{ ref: experienceRef, id: "experience" as Section },
-						{ ref: projectsRef, id: "projects" as Section },
-						{ ref: testimonialsRef, id: "testimonials" as Section },
-						{ ref: contactRef, id: "contact" as Section },
-					];
-
-					// Find the section that's closest to the top of the viewport (with offset)
-					const offset = window.innerHeight * 0.3; // 30% from top
-					let currentSectionId: Section = "hero";
-					let minDistance = Infinity;
-
-					sections.forEach(({ ref, id }) => {
-						if (ref.current) {
-							const rect = ref.current.getBoundingClientRect();
-							const distance = Math.abs(rect.top - offset);
-
-							// If this section is in view and closer to our target position
-							if (
-								rect.top < window.innerHeight &&
-								rect.bottom > 0 &&
-								distance < minDistance
-							) {
-								minDistance = distance;
-								currentSectionId = id;
-							}
-						}
-					});
-
-					setCurrentSection(currentSectionId);
-					ticking = false;
-				});
-
-				ticking = true;
+		const scrollToTop = () => {
+			if (smootherRef.current) {
+				smootherRef.current.scrollTo(0, false);
+			} else {
+				window.scrollTo({ top: 0, left: 0, behavior: "auto" });
 			}
 		};
 
-		// Initial check
-		handleScroll();
+		scrollToTop();
+		const timer = setTimeout(scrollToTop, 120);
 
-		// Listen to scroll events
-		window.addEventListener("scroll", handleScroll, { passive: true });
+		setCurrentSection("hero");
+		pendingSectionRef.current = null;
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			clearTimeout(timer);
+			history.scrollRestoration = prevRestoration || "auto";
 		};
+	}, []);
+
+	useEffect(() => {
+		// Wait for ScrollSmoother to be ready
+		const timer = setTimeout(() => {
+			const sections = [
+				{ ref: heroRef, id: "hero" as Section },
+				{ ref: aboutRef, id: "about" as Section },
+				{ ref: skillsRef, id: "skills" as Section },
+				{ ref: journeyRef, id: "journey" as Section },
+				{ ref: experienceRef, id: "experience" as Section },
+				{ ref: projectsRef, id: "projects" as Section },
+				{ ref: contactRef, id: "contact" as Section },
+			];
+
+			// Create ScrollTrigger for each section to detect when it's active
+			const triggers = sections.map(({ ref, id }) => {
+				if (!ref.current) return null;
+
+				return ScrollTrigger.create({
+					trigger: ref.current,
+					start: "top center",
+					end: "bottom center",
+					onEnter: () => {
+						if (!pendingSectionRef.current) {
+							setCurrentSection(id);
+						}
+					},
+					onEnterBack: () => {
+						if (!pendingSectionRef.current) {
+							setCurrentSection(id);
+						}
+					},
+				});
+			});
+
+			return () => {
+				triggers.forEach((trigger) => trigger?.kill());
+			};
+		}, 100);
+
+		return () => clearTimeout(timer);
 	}, []);
 
 	useEffect(() => {
@@ -257,13 +274,13 @@ export default function Home() {
 					<Projects />
 				</div>
 
-				<div
+				{/* <div
 					ref={testimonialsRef}
 					data-section="testimonials"
 					className="min-h-screen"
 				>
 					<Testimonials />
-				</div>
+				</div> */}
 
 				<div ref={contactRef} data-section="contact" className="min-h-screen">
 					<Contact />
