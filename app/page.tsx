@@ -5,7 +5,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Hero } from "@/components/sections/Hero/Hero";
 import { LoadingSpinner } from "@/components/ui";
 import type { Section } from "@/lib/types";
-import { gsap, ScrollSmoother, ScrollTrigger } from "@/lib/utils/gsap-config";
+import {  ScrollSmoother, ScrollTrigger } from "@/lib/utils/gsap-config";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
