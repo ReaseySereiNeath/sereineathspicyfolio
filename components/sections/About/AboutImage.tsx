@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/lib/hooks/useScrollReveal";
+import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 import { gsap } from "@/lib/utils/gsap-config";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
@@ -12,9 +13,17 @@ export function AboutImage() {
 	// Use scroll reveal for image - slide in from left
 	useScrollReveal(imageRef, { x: -50, y: 0, duration: 0.8 });
 
-	// Animated shadow effect
+	// Animated shadow effect - disabled on mobile for performance
+	// Continuous filter animations are very expensive on mobile GPUs
 	useEffect(() => {
 		if (!imageElementRef.current) return;
+
+		const { shouldSimplifyAnimations } = getAnimationPreferences();
+
+		// Skip continuous animation on mobile - use static shadow instead
+		if (shouldSimplifyAnimations) {
+			return;
+		}
 
 		const tl = gsap.timeline({ repeat: -1, yoyo: true });
 		tl.to(imageElementRef.current, {
@@ -39,7 +48,7 @@ export function AboutImage() {
 					alt="About me - Developer illustration"
 					width={350}
 					height={650}
-					className="h-auto w-auto max-h-[650px] object-contain"
+					className="h-auto w-auto max-h-[650px] object-contain will-change-[filter]"
 					style={{
 						filter:
 							"drop-shadow(0 25px 50px rgba(59, 130, 246, 0.5)) drop-shadow(0 10px 20px rgba(100, 150, 255, 0.3))",

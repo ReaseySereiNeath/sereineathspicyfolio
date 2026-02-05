@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/utils/gsap-config";
+import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -117,20 +118,24 @@ export function Hero() {
       const startNWidth = nWidth > 0 ? nWidth : 50;
 
       // ============== INITIAL STATES ==============
+      const { shouldSimplifyAnimations } = getAnimationPreferences();
+
       gsap.set(introOverlayRef.current, { opacity: 1 });
       gsap.set(sereiGroupRef.current, { x: 0, width: startSWidth });
       gsap.set(neathGroupRef.current, { x: 0, width: startNWidth });
       gsap.set(ereiRef.current, { opacity: 0, xPercent: -100 });
       gsap.set(eathRef.current, { opacity: 0, xPercent: -100 });
       // Use autoAlpha instead of opacity - it handles visibility too
+      // On mobile: skip blur/textShadow animations (very expensive on mobile GPUs)
       gsap.set(nameWrapperRef.current, {
-        scale: 0.5,
+        scale: shouldSimplifyAnimations ? 0.8 : 0.5,
         autoAlpha: 0,
-        filter: "blur(8px)",
-        textShadow: "0 0 40px rgba(255,255,255,0.8)",
+        filter: shouldSimplifyAnimations ? "none" : "blur(8px)",
+        textShadow: shouldSimplifyAnimations ? "none" : "0 0 40px rgba(255,255,255,0.8)",
         x: 0,
         y: 0,
         gap: "0px",
+        willChange: "transform, opacity",
       });
 
       gsap.set(contentRef.current, { opacity: 0 });
@@ -150,28 +155,28 @@ export function Hero() {
       });
 
       tl
-        // 1) Intro Zoom Effect: Scale 0.5 -> 1.1 -> 1 with Blur + Glow (Apple style)
+        // 1) Intro Zoom Effect: Scale -> 1.1 -> 1 (skip blur/glow on mobile for performance)
         .to(nameWrapperRef.current, {
           scale: 1.1,
           autoAlpha: 1,
-          filter: "blur(0px)",
-          textShadow: "0 0 20px rgba(255,255,255,0.5)",
-          duration: 1.4,
+          filter: "none",
+          textShadow: shouldSimplifyAnimations ? "none" : "0 0 20px rgba(255,255,255,0.5)",
+          duration: shouldSimplifyAnimations ? 0.8 : 1,
           ease: "expo.out",
         })
         .to(
           nameWrapperRef.current,
           {
             scale: 1,
-            textShadow: "0 0 0px rgba(255,255,255,0)",
-            duration: 0.6,
+            textShadow: "none",
+            duration: shouldSimplifyAnimations ? 0.4 : 0.6,
             ease: "power2.inOut",
           },
           "-=0.4"
         )
 
-        // 2) Hold "SN" centered for a beat (Apple logo style)
-        .to({}, { duration: 2.5 })
+        // 2) Hold "SN" centered for a beat (shorter on mobile)
+        .to({}, { duration: shouldSimplifyAnimations ? 0.8 : 1 })
 
         // 3) S expands + "erei" slides out
         .to(sereiGroupRef.current, {
@@ -179,12 +184,12 @@ export function Hero() {
             const width = measureInnerWidth(sereiGroupRef.current, sereiInnerRef.current);
             return width > 0 ? width : startSWidth;
           },
-          duration: 0.8,
+          duration: 0.5,
           ease: "power4.out",
         })
         .to(
           ereiRef.current,
-          { xPercent: 0, opacity: 1, duration: 0.8, ease: "power4.out" },
+          { xPercent: 0, opacity: 1, duration: 0.5, ease: "power4.out" },
           "<"
         )
 
@@ -196,22 +201,22 @@ export function Hero() {
               const width = measureInnerWidth(neathGroupRef.current, neathInnerRef.current);
               return width > 0 ? width : startNWidth;
             },
-            duration: 0.8,
+            duration: 0.5,
             ease: "power4.out",
           },
           "<0.1"
         )
         .to(
           eathRef.current,
-          { xPercent: 0, opacity: 1, duration: 0.8, ease: "power4.out" },
+          { xPercent: 0, opacity: 1, duration: 0.5, ease: "power4.out" },
           "<"
         )
 
         // 5) Gap grows between the two name groups
-        .to(nameWrapperRef.current, { gap: "20px", duration: 0.8 }, "<")
+        .to(nameWrapperRef.current, { gap: "20px", duration: 0.5 }, "<")
 
         // 6) Hold on full name
-        .to({}, { duration: 0.6 })
+        .to({}, { duration: 0.4 })
 
         // 7) Move name to left + fade overlay
         .to(nameWrapperRef.current, {
@@ -229,10 +234,10 @@ export function Hero() {
             return targetTop - currentCenter;
           },
           scale: 0.7,
-          duration: 1.2,
+          duration: 0.8,
           ease: "expo.inOut",
         })
-        .to(introOverlayRef.current, { opacity: 0, duration: 0.8 }, "-=0.8")
+        .to(introOverlayRef.current, { opacity: 0, duration: 0.5 }, "-=0.5")
 
         // 8) Content slides in
         .set(contentRef.current, { opacity: 1 })
@@ -245,15 +250,15 @@ export function Hero() {
           "-=0.3"
         )
 
-        // 9) Folder drops with elastic bounce
+        // 9) Folder drops with elastic bounce (simpler easing on mobile)
         .to(
           folderRef.current,
           {
             y: 0,
             opacity: 1,
             rotation: 0,
-            duration: 1,
-            ease: "elastic.out(1, 0.75)",
+            duration: shouldSimplifyAnimations ? 0.6 : 1,
+            ease: shouldSimplifyAnimations ? "power2.out" : "elastic.out(1, 0.75)",
           },
           "-=0.6"
         );

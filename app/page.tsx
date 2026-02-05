@@ -92,8 +92,6 @@ export default function Home() {
 	const experienceRef = useRef<HTMLDivElement>(null);
 	const projectsRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
-	const orb1Ref = useRef<HTMLDivElement>(null);
-	const orb2Ref = useRef<HTMLDivElement>(null);
 
 	// Initialize ScrollSmoother
 	useGSAP(() => {
@@ -199,42 +197,12 @@ export default function Home() {
 		return () => clearTimeout(timer);
 	}, []);
 
-	useEffect(() => {
-		// Background orbs animation
-		gsap.to(orb1Ref.current, {
-			scale: 1.2,
-			opacity: 0.5,
-			duration: 10,
-			repeat: -1,
-			yoyo: true,
-			ease: "sine.inOut",
-		});
-
-		gsap.to(orb2Ref.current, {
-			scale: 1.2,
-			opacity: 0.4,
-			duration: 12,
-			repeat: -1,
-			yoyo: true,
-			ease: "sine.inOut",
-		});
-	}, []);
 
 	return (
 		<div
 			id="smooth-wrapper"
 			className="relative size-full overflow-hidden bg-black text-white"
 		>
-			{/* Animated background gradients - Fixed positioned elements stay outside smooth-content */}
-			<div
-				ref={orb1Ref}
-				className="pointer-events-none fixed right-0 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-l from-blue-500/30 via-blue-500/10 to-transparent blur-3xl"
-			/>
-			<div
-				ref={orb2Ref}
-				className="pointer-events-none fixed bottom-0 left-0 h-[600px] w-[600px] rounded-full bg-gradient-to-r from-blue-500/20 via-blue-500/10 to-transparent blur-3xl"
-			/>
-
 			{/* Social Links */}
 			{/* <SocialLinks /> */}
 
