@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, type BadgeVariants } from "@/components/ui";
+import { Badge, type BadgeVariants } from "@/components/ui/Badge";
 import { useScrollRevealChildren } from "@/lib/hooks/useScrollReveal";
 import { memo, useRef } from "react";
 import { twMerge } from "tailwind-merge";

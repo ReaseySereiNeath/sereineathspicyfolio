@@ -1,5 +1,6 @@
 "use client";
 
+import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 import { gsap } from "gsap";
 import { Github, Globe, Linkedin, Mail } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -15,12 +16,20 @@ export function SocialLinks() {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
+		const { shouldSimplifyAnimations } = getAnimationPreferences();
+
 		const ctx = gsap.context(() => {
+			const links = containerRef.current?.children || [];
+
+			if (shouldSimplifyAnimations) {
+				// Show immediately without animation
+				gsap.set(containerRef.current, { opacity: 1, y: 0 });
+				gsap.set(links, { opacity: 1, scale: 1 });
+				return;
+			}
+
 			// Set initial states to hidden
 			gsap.set(containerRef.current, { opacity: 0, y: -20 });
-
-			// Individual links with stagger
-			const links = containerRef.current?.children || [];
 			gsap.set(links, { opacity: 0, scale: 0 });
 
 			// Container entrance
@@ -52,7 +61,6 @@ export function SocialLinks() {
 						ease: "back.out(1.7)",
 					});
 
-					// Glow effect
 					const glowEffect = element.querySelector(".glow-effect");
 					gsap.to(glowEffect, {
 						opacity: 0.2,
@@ -68,7 +76,6 @@ export function SocialLinks() {
 						ease: "power2.out",
 					});
 
-					// Glow effect
 					const glowEffect = element.querySelector(".glow-effect");
 					gsap.to(glowEffect, {
 						opacity: 0,

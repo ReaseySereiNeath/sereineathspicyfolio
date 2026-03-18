@@ -46,12 +46,12 @@ export function ProjectCard({
 						<div className="h-6 w-6 rounded bg-white/20 backdrop-blur-sm" />
 					</div>
 					<div className="flex gap-2">
-						<div className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-all duration-300 hover:border-blue-500/50">
+						<a href="#" aria-label="View source on GitHub" className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-all duration-300 hover:border-blue-500/50">
 							<Github className="h-4 w-4 text-gray-400" />
-						</div>
-						<div className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-all duration-300 hover:border-blue-500/50">
+						</a>
+						<a href="#" aria-label="View live project" className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-all duration-300 hover:border-blue-500/50">
 							<ExternalLink className="h-4 w-4 text-gray-400" />
-						</div>
+						</a>
 					</div>
 				</div>
 

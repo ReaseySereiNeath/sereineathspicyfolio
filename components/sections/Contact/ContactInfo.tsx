@@ -1,6 +1,7 @@
 "use client";
 
 import { contactMethods, socialLinks } from "@/data/contact";
+import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 import { useScrollReveal } from "@/lib/hooks/useScrollReveal";
 import { gsap } from "@/lib/utils/gsap-config";
 import { useEffect, useRef } from "react";
@@ -15,6 +16,9 @@ export function ContactInfo() {
 	useEffect(() => {
 		const container = infoRef.current;
 		if (!container) return;
+
+		const { shouldSimplifyAnimations } = getAnimationPreferences();
+		if (shouldSimplifyAnimations) return;
 
 		const ctx = gsap.context(() => {
 			// Contact method cards
@@ -132,6 +136,7 @@ export function ContactInfo() {
 							href={social.href}
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label={social.label}
 							className={`social-icon rounded-lg border border-indigo-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-3 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/30 ${social.color}`}
 						>
 							<social.icon className="h-5 w-5" />

@@ -1,6 +1,9 @@
 "use client";
 
-import { Button, Input, Textarea } from "@/components/ui";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
+import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 import { useScrollReveal } from "@/lib/hooks/useScrollReveal";
 import {
 	validateContactForm,
@@ -114,6 +117,9 @@ export function ContactForm() {
 		const form = formRef.current;
 		if (!form) return;
 
+		const { shouldSimplifyAnimations } = getAnimationPreferences();
+		if (shouldSimplifyAnimations) return;
+
 		const ctx = gsap.context(() => {
 			const formFields = form.querySelectorAll(".form-field");
 
@@ -152,10 +158,11 @@ export function ContactForm() {
 						type="text"
 						id="name"
 						value={formData.name}
-						onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+						onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
 						onBlur={() => handleBlur("name")}
 						variant="indigo"
-						placeholder="John Doe"
+						placeholder="John Doe…"
+						autoComplete="name"
 						required
 						disabled={isSubmitting}
 					/>
@@ -174,11 +181,13 @@ export function ContactForm() {
 						id="email"
 						value={formData.email}
 						onChange={(e) =>
-							setFormData({ ...formData, email: e.target.value })
+							setFormData((prev) => ({ ...prev, email: e.target.value }))
 						}
 						onBlur={() => handleBlur("email")}
 						variant="indigo"
 						placeholder="john@example.com"
+						autoComplete="email"
+						spellCheck={false}
 						required
 						disabled={isSubmitting}
 					/>
@@ -196,12 +205,12 @@ export function ContactForm() {
 						id="message"
 						value={formData.message}
 						onChange={(e) =>
-							setFormData({ ...formData, message: e.target.value })
+							setFormData((prev) => ({ ...prev, message: e.target.value }))
 						}
 						onBlur={() => handleBlur("message")}
 						variant="indigo"
 						rows={6}
-						placeholder="Tell me about your project..."
+						placeholder="Tell me about your project…"
 						required
 						disabled={isSubmitting}
 					/>
@@ -224,7 +233,7 @@ export function ContactForm() {
 					rightIcon={isSubmitting ? undefined : <Send className="h-5 w-5" />}
 					disabled={isSubmitting}
 				>
-					{isSubmitting ? "Sending..." : "Send Message"}
+					{isSubmitting ? "Sending…" : "Send Message"}
 				</Button>
 			</form>
 		</div>

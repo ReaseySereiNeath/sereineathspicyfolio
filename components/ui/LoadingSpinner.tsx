@@ -42,7 +42,7 @@ const LoadingSpinnerComponent = ({
 	variant,
 	size,
 	className,
-	text = "Loading...",
+	text = "Loading…",
 	centered = false,
 	fullScreen = false,
 }: LoadingSpinnerProps) => {

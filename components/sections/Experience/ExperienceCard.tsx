@@ -102,7 +102,7 @@ export function ExperienceCard({
 					<div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
 						<div className="flex items-start gap-4">
 							<div className="rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-400/20 p-3">
-								<Briefcase className="h-5 w-5 text-blue-400" />
+								<Briefcase className="h-5 w-5 text-blue-400" aria-hidden="true" />
 							</div>
 							<div>
 								<h3 className="mb-1 text-xl text-white md:text-2xl">{title}</h3>
@@ -110,7 +110,7 @@ export function ExperienceCard({
 							</div>
 						</div>
 						<div className="ml-16 flex items-center gap-2 text-sm text-gray-400 md:ml-0 md:text-base">
-							<Calendar className="h-4 w-4" />
+							<Calendar className="h-4 w-4" aria-hidden="true" />
 							<span>{period}</span>
 						</div>
 					</div>
@@ -122,7 +122,7 @@ export function ExperienceCard({
 
 					{/* Location */}
 					<div className="ml-16 flex items-center gap-2 text-sm text-blue-400 md:ml-16">
-						<MapPin className="h-4 w-4" />
+						<MapPin className="h-4 w-4" aria-hidden="true" />
 						<span>{location}</span>
 					</div>
 				</div>

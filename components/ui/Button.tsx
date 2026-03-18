@@ -8,7 +8,7 @@ import { tv, type VariantProps } from "tailwind-variants";
  * Button component variants
  */
 const buttonVariants = tv({
-	base: "rounded-full transition-all duration-300 font-medium hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none inline-flex items-center justify-center gap-2",
+	base: "rounded-full transition-[transform,box-shadow,opacity] duration-300 font-medium hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none inline-flex items-center justify-center gap-2",
 	variants: {
 		variant: {
 			primary:

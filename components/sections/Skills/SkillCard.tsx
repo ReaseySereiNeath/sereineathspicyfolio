@@ -112,7 +112,7 @@ export function SkillCard({
 
 				{/* Decorative corner */}
 				<div className="absolute right-4 top-4 h-12 w-12 opacity-10">
-					<Zap className="h-full w-full text-blue-400" />
+					<Zap className="h-full w-full text-blue-400" aria-hidden="true" />
 				</div>
 			</div>
 		</div>

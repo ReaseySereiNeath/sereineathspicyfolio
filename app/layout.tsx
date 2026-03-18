@@ -6,6 +6,9 @@ export const metadata: Metadata = {
 	title: "Reasey - Portfolio",
 	description:
 		"Build exceptional digital experiences that make people's lives easier.",
+	other: {
+		"theme-color": "#000000",
+	},
 };
 
 export default function RootLayout({
@@ -14,7 +17,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" style={{ colorScheme: "dark" }}>
 			<body className="antialiased">
 				{children}
 				<Toaster

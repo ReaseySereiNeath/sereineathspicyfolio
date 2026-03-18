@@ -3,12 +3,16 @@
 import { Navigation } from "@/components/layout/Navigation";
 // import { SocialLinks } from "@/components/layout/SocialLinks";
 import { Hero } from "@/components/sections/Hero/Hero";
-import { LoadingSpinner } from "@/components/ui";
+import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import type { Section } from "@/lib/types";
 import {  ScrollSmoother, ScrollTrigger } from "@/lib/utils/gsap-config";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
+
+const MOBILE_REGEX = /iPhone|iPad|iPod|Android/i;
+
+const SectionLoader = () => <LoadingSpinner fullScreen />;
 
 // Dynamically import heavy section components for better code splitting
 const About = dynamic(
@@ -16,9 +20,7 @@ const About = dynamic(
 		import("@/components/sections/About/About").then((mod) => ({
 			default: mod.About,
 		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
+	{ loading: SectionLoader }
 );
 
 const Skills = dynamic(
@@ -26,9 +28,7 @@ const Skills = dynamic(
 		import("@/components/sections/Skills/Skills").then((mod) => ({
 			default: mod.Skills,
 		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
+	{ loading: SectionLoader }
 );
 
 const Journey = dynamic(
@@ -36,9 +36,7 @@ const Journey = dynamic(
 		import("@/components/sections/Journey/Journey").then((mod) => ({
 			default: mod.Journey,
 		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
+	{ loading: SectionLoader }
 );
 
 const Experience = dynamic(
@@ -46,9 +44,7 @@ const Experience = dynamic(
 		import("@/components/sections/Experience/Experience").then((mod) => ({
 			default: mod.Experience,
 		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
+	{ loading: SectionLoader }
 );
 
 const Projects = dynamic(
@@ -56,9 +52,7 @@ const Projects = dynamic(
 		import("@/components/sections/Projects/Projects").then((mod) => ({
 			default: mod.Projects,
 		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
+	{ loading: SectionLoader }
 );
 
 // const Testimonials = dynamic(
@@ -76,9 +70,7 @@ const Contact = dynamic(
 		import("@/components/sections/Contact/Contact").then((mod) => ({
 			default: mod.Contact,
 		})),
-	{
-		loading: () => <LoadingSpinner fullScreen />,
-	}
+	{ loading: SectionLoader }
 );
 
 export default function Home() {
@@ -96,7 +88,7 @@ export default function Home() {
 	// Initialize ScrollSmoother
 	useGSAP(() => {
 		// Check if device is mobile/touch device
-		const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+		const isMobile = MOBILE_REGEX.test(navigator.userAgent);
 
 		smootherRef.current = ScrollSmoother.create({
 			smooth: isMobile ? 1 : 2, // Less smoothing on mobile for better performance
@@ -128,7 +120,19 @@ export default function Home() {
 
 		setCurrentSection(section);
 		pendingSectionRef.current = section;
+		window.history.replaceState(null, "", `#${section}`);
 	};
+
+	// Handle initial URL hash on load
+	useEffect(() => {
+		const hash = window.location.hash.replace("#", "") as Section;
+		const validSections: Section[] = ["hero", "about", "skills", "journey", "experience", "projects", "contact"];
+		if (hash && validSections.includes(hash)) {
+			// Delay to allow ScrollSmoother to initialize
+			const timer = setTimeout(() => scrollToSection(hash), 300);
+			return () => clearTimeout(timer);
+		}
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		if (typeof window === "undefined") return;
