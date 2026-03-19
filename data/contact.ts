@@ -1,5 +1,5 @@
 import { ContactMethod, SocialLink } from "@/lib/types";
-import { Github, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { Github, Globe, Linkedin, Mail, MapPin, Phone} from "lucide-react";
 
 export const contactMethods: ContactMethod[] = [
 	{
@@ -26,21 +26,25 @@ export const socialLinks: SocialLink[] = [
 	{
 		icon: Github,
 		label: "GitHub",
-		href: "https://github.com",
+		href: "https://github.com/ReaseySereiNeath",
 		color: "hover:text-gray-400",
 	},
 	{
 		icon: Linkedin,
 		label: "LinkedIn",
-		href: "https://linkedin.com",
+		href: "https://www.linkedin.com/in/sereineath-reasey-8595541a7/",
 		color: "hover:text-blue-400",
 	},
 	{
-		icon: Twitter,
-		label: "Twitter",
-		href: "https://twitter.com",
-		color: "hover:text-cyan-400",
+		icon: Globe,
+		label: "Website",
+		href: "#",
+		color: "hover:text-green-400",
 	},
-	
-	
+	{
+		icon: Mail,
+		label: "Email",
+		href: "mailto:sereineathreasey@gmail.com",
+		color: "hover:text-red-400",
+	},
 ];

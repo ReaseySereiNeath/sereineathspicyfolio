@@ -1,16 +1,9 @@
 "use client";
 
+import { socialLinks } from "@/data/contact";
 import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 import { gsap } from "gsap";
-import { Github, Globe, Linkedin, Mail } from "lucide-react";
 import { useEffect, useRef } from "react";
-
-const socialLinks = [
-	{ icon: Github, href: "#", label: "GitHub" },
-	{ icon: Linkedin, href: "#", label: "LinkedIn" },
-	{ icon: Globe, href: "#", label: "Website" },
-	{ icon: Mail, href: "#", label: "Email" },
-];
 
 export function SocialLinks() {
 	const containerRef = useRef<HTMLDivElement>(null);
