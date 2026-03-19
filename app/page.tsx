@@ -85,16 +85,18 @@ export default function Home() {
 	const projectsRef = useRef<HTMLDivElement>(null);
 	const contactRef = useRef<HTMLDivElement>(null);
 
-	// Initialize ScrollSmoother
+	// Initialize ScrollSmoother (disabled on mobile for performance)
 	useGSAP(() => {
 		const isMobile = MOBILE_REGEX.test(navigator.userAgent);
 
-		smootherRef.current = ScrollSmoother.create({
-			smooth: isMobile ? 0 : 2, // No artificial smoothing on mobile
-			effects: isMobile ? false : true,
-			smoothTouch: false, // Let native touch scrolling handle it
-			normalizeScroll: isMobile ? true : false, // Keep normalizeScroll on mobile for consistent ScrollTrigger scrub
-		});
+		if (!isMobile) {
+			smootherRef.current = ScrollSmoother.create({
+				smooth: 2,
+				effects: true,
+				smoothTouch: false,
+				normalizeScroll: false,
+			});
+		}
 	}, []);
 
 	const scrollToSection = (section: Section) => {

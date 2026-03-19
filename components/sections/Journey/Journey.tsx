@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionHeader } from "@/components/shared/SectionHeader";
+import { getAnimationPreferences } from "@/lib/hooks/useAnimationPreferences";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
@@ -19,14 +20,16 @@ export function Journey() {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
+		const { isMobile } = getAnimationPreferences();
+
 		const pulses = gsap
 			.timeline({
 				defaults: {
 					duration: 0.05,
 					autoAlpha: 1,
-					scale: 2,
+					scale: isMobile ? 1.5 : 2,
 					transformOrigin: "center",
-					ease: "elastic(2.5, 1)",
+					ease: isMobile ? "power2.out" : "elastic(2.5, 1)",
 				},
 			})
 			.to(".ball02, .text01, #text-2015, #ioftc", {}, 0.04)
@@ -44,7 +47,7 @@ export function Journey() {
 				defaults: { duration: 1 },
 				scrollTrigger: {
 					trigger: "#svg-stage",
-					scrub: true,
+					scrub: isMobile ? 0.5 : true,
 					start: "top 30%",
 					end: "bottom top",
 				},
