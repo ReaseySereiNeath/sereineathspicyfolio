@@ -35,6 +35,21 @@
 		font-size: var(--font-size);
 	}
 
+	/* Float animation for tech stack badges */
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-20px);
+		}
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+
 	/* Respect reduced motion preference */
 	@media (prefers-reduced-motion: reduce) {
 		*,
