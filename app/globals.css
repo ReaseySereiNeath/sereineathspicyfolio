@@ -31,16 +31,6 @@
 		@apply bg-black text-white antialiased;
 	}
 
-	/* Skip rendering off-screen sections until near viewport */
-	[data-section] {
-		content-visibility: auto;
-		contain-intrinsic-size: auto 100vh;
-	}
-	/* Never defer the hero — it's above the fold */
-	[data-section="hero"] {
-		content-visibility: visible;
-		contain-intrinsic-size: none;
-	}
 
 	html {
 		font-size: var(--font-size);

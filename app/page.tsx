@@ -218,7 +218,8 @@ export default function Home() {
 			/>
 
 			{/* Scrollable Content - ScrollSmoother wrapper */}
-			<main id="smooth-content" role="main" aria-label="Main content">
+			<main role="main" aria-label="Main content">
+			<div id="smooth-content">
 				<div ref={heroRef} data-section="hero" className="min-h-screen">
 					<Hero />
 				</div>
@@ -258,6 +259,7 @@ export default function Home() {
 				<div ref={contactRef} data-section="contact" className="min-h-screen">
 					<Contact />
 				</div>
+			</div>
 			</main>
 		</div>
 	);
