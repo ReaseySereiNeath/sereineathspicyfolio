@@ -116,7 +116,7 @@ export function Skills(_props: {
 
 			// Category rows staggered entrance
 			const categoryRows = content.querySelectorAll(".tech-category");
-			categoryRows.forEach((row, i) => {
+			categoryRows.forEach((row) => {
 				const label = row.querySelector(".category-label");
 				const logos = row.querySelectorAll(".tech-logo");
 
@@ -127,11 +127,11 @@ export function Skills(_props: {
 					{
 						opacity: 1,
 						x: 0,
-						duration: 0.6,
+						duration: 0.5,
 						ease: "power2.out",
 						scrollTrigger: {
 							trigger: row,
-							start: "top 85%",
+							start: "top 95%",
 							toggleActions: "play none none reverse",
 						},
 					}
@@ -140,60 +140,20 @@ export function Skills(_props: {
 				// Logos pop in with stagger
 				gsap.fromTo(
 					logos,
-					{
-						opacity: 0,
-						scale: 0,
-						rotation: () => gsap.utils.random(-90, 90),
-					},
+					{ opacity: 0, scale: 0.8 },
 					{
 						opacity: 1,
 						scale: 1,
-						rotation: 0,
-						duration: 0.5,
-						stagger: 0.05,
-						ease: "back.out(1.7)",
+						duration: 0.3,
+						stagger: 0.02,
+						ease: "power2.out",
 						scrollTrigger: {
 							trigger: row,
-							start: "top 85%",
+							start: "top 95%",
 							toggleActions: "play none none reverse",
 						},
 					}
 				);
-
-				// Gentle continuous float for each logo
-				logos.forEach((logo, j) => {
-					gsap.to(logo, {
-						y: gsap.utils.random(-6, -12),
-						duration: gsap.utils.random(2.5, 4),
-						ease: "sine.inOut",
-						repeat: -1,
-						yoyo: true,
-						delay: (i * 0.3) + (j * 0.1),
-					});
-				});
-			});
-
-			// Hover interactions
-			const allLogos = content.querySelectorAll<HTMLElement>(".tech-logo");
-			allLogos.forEach((logo) => {
-				const onEnter = () => {
-					gsap.to(logo, {
-						scale: 1.2,
-						filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.5))",
-						duration: 0.3,
-						ease: "back.out(1.7)",
-					});
-				};
-				const onLeave = () => {
-					gsap.to(logo, {
-						scale: 1,
-						filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.3))",
-						duration: 0.3,
-						ease: "power2.out",
-					});
-				};
-				logo.addEventListener("mouseenter", onEnter);
-				logo.addEventListener("mouseleave", onLeave);
 			});
 		}, section);
 
@@ -228,12 +188,8 @@ export function Skills(_props: {
 									item.logo ? (
 										<div
 											key={item.name}
-											className="tech-logo cursor-pointer"
+											className="tech-logo cursor-pointer transition-transform duration-300 ease-out hover:scale-110"
 											title={item.name}
-											style={{
-												filter:
-													"drop-shadow(0 6px 12px rgba(0,0,0,0.3))",
-											}}
 										>
 											<Image
 												src={item.logo}
@@ -246,11 +202,7 @@ export function Skills(_props: {
 									) : (
 										<span
 											key={item.name}
-											className={`tech-logo inline-flex items-center rounded-md px-3 py-1.5 text-xs font-semibold text-white ${BADGE_COLORS[item.name] ?? "bg-gray-700"}`}
-											style={{
-												filter:
-													"drop-shadow(0 6px 12px rgba(0,0,0,0.3))",
-											}}
+											className={`tech-logo inline-flex items-center rounded-md px-3 py-1.5 text-xs font-semibold text-white transition-transform duration-300 ease-out hover:scale-110 ${BADGE_COLORS[item.name] ?? "bg-gray-700"}`}
 										>
 											{item.name}
 										</span>
