@@ -36,7 +36,7 @@ export function TimelinePic({
 			quality={quality}
 			priority={priority}
 			unoptimized={unoptimized}
-			className={`absolute overflow-hidden rounded-lg border-2 border-[#0e0e0e] opacity-0 object-cover shadow-lg transition-all duration-300 md:border-[3px] lg:border-[4px] ${className}`}
+			className={`absolute overflow-hidden rounded-lg border-2 border-[#0e0e0e] opacity-0 object-cover shadow-lg transition-[transform,opacity] duration-300 md:border-[3px] lg:border-[4px] ${className}`}
 			style={{ borderRadius: "0.5rem" }}
 		/>
 	);

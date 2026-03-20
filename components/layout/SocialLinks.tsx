@@ -103,7 +103,7 @@ export function SocialLinks() {
 					key={link.label}
 					href={link.href}
 					aria-label={link.label}
-					className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-blue-500/10 bg-gradient-to-br from-gray-900/80 to-gray-800/80 text-gray-400 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/30"
+					className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-blue-500/10 bg-gradient-to-br from-gray-900/80 to-gray-800/80 text-gray-400 backdrop-blur-sm transition-[border-color,transform] duration-300 hover:border-blue-500/30 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none"
 				>
 					{/* Glow effect */}
 					<div className="glow-effect absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-blue-400 opacity-0 blur-xl transition-opacity duration-300" />

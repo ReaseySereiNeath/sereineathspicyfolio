@@ -111,12 +111,12 @@ export function ContactInfo() {
 					<a
 						key={index}
 						href={info.href || "#"}
-						className={`contact-card flex items-center gap-4 rounded-xl border border-indigo-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/30 ${
+						className={`contact-card flex items-center gap-4 rounded-xl border border-indigo-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-4 backdrop-blur-sm transition-[border-color,transform] duration-300 hover:border-indigo-500/30 focus-visible:ring-2 focus-visible:ring-indigo-500/50 focus-visible:outline-none ${
 							!info.href ? "pointer-events-none" : ""
 						}`}
 					>
 						<div className="rounded-lg bg-gradient-to-br from-blue-500/20 to-indigo-500/20 p-3">
-							<info.icon className="h-5 w-5 text-indigo-400" />
+							<info.icon className="h-5 w-5 text-indigo-400" aria-hidden="true" />
 						</div>
 						<div>
 							<div className="text-sm text-gray-500">{info.label}</div>
@@ -137,7 +137,7 @@ export function ContactInfo() {
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={social.label}
-							className={`social-icon rounded-lg border border-indigo-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-3 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/30 ${social.color}`}
+							className={`social-icon rounded-lg border border-indigo-500/10 bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-3 backdrop-blur-sm transition-[border-color,transform] duration-300 hover:border-indigo-500/30 focus-visible:ring-2 focus-visible:ring-indigo-500/50 focus-visible:outline-none ${social.color}`}
 						>
 							<social.icon className="h-5 w-5" />
 						</a>

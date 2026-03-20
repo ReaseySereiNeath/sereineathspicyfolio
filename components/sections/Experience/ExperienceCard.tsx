@@ -97,7 +97,7 @@ export function ExperienceCard({
 				<div className="glow-effect absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-blue-400/10 opacity-0 blur-xl transition-opacity duration-500" />
 
 				{/* Content */}
-				<div className="experience-content relative rounded-2xl border border-blue-500/10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 backdrop-blur-sm transition-all duration-500 group-hover:border-blue-500/30 md:p-8">
+				<div className="experience-content relative rounded-2xl border border-blue-500/10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 backdrop-blur-sm transition-[border-color,transform] duration-500 group-hover:border-blue-500/30 md:p-8">
 					{/* Header */}
 					<div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
 						<div className="flex items-start gap-4">

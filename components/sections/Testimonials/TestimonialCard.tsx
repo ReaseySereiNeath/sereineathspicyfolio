@@ -59,10 +59,10 @@ export function TestimonialCard({
 			<div className="glow-effect absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 opacity-0 blur-xl transition-opacity duration-500" />
 
 			{/* Card */}
-			<div className="testimonial-content relative h-full rounded-2xl border border-indigo-500/10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 backdrop-blur-sm transition-all duration-500 group-hover:border-indigo-500/30 md:p-8">
+			<div className="testimonial-content relative h-full rounded-2xl border border-indigo-500/10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 backdrop-blur-sm transition-[border-color] duration-500 group-hover:border-indigo-500/30 md:p-8">
 				{/* Quote icon */}
 				<div className="absolute right-6 top-6 opacity-10">
-					<Quote className="h-12 w-12 text-indigo-400" />
+					<Quote className="h-12 w-12 text-indigo-400" aria-hidden="true" />
 				</div>
 
 				{/* Rating */}

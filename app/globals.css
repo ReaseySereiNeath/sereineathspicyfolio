@@ -4,22 +4,22 @@
 
 :root {
 	/* Core colors */
-	--background: "#000000";
-	--foreground: "#ffffff";
+	--background: #000000;
+	--foreground: #ffffff;
 
 	/* Accent colors */
-	--primary: "#3b82f6";
-	--primary-foreground: "#ffffff";
+	--primary: #3b82f6;
+	--primary-foreground: #ffffff;
 
 	/* Border & ring */
-	--border: "#3b82f6";
-	--ring: "#3b82f6";
+	--border: #3b82f6;
+	--ring: #3b82f6;
 
 	/* Border radius */
-	--radius: "0.75rem";
+	--radius: 0.75rem;
 
 	/* Typography */
-	--font-size: "16px";
+	--font-size: 16px;
 }
 
 @layer base {
@@ -31,23 +31,19 @@
 		@apply bg-black text-white antialiased;
 	}
 
+	/* Skip rendering off-screen sections until near viewport */
+	[data-section] {
+		content-visibility: auto;
+		contain-intrinsic-size: auto 100vh;
+	}
+	/* Never defer the hero — it's above the fold */
+	[data-section="hero"] {
+		content-visibility: visible;
+		contain-intrinsic-size: none;
+	}
+
 	html {
 		font-size: var(--font-size);
-	}
-
-	/* Float animation for tech stack badges */
-	@keyframes float {
-		0%,
-		100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-20px);
-		}
-	}
-
-	.animate-float {
-		animation: float 3s ease-in-out infinite;
 	}
 
 	/* Respect reduced motion preference */

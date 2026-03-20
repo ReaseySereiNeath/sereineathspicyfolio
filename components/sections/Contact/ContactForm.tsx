@@ -60,6 +60,12 @@ export function ContactForm() {
 			toast.error("Please fix the errors in the form", {
 				icon: <AlertCircle className="h-5 w-5" />,
 			});
+			// Focus first error field
+			const firstErrorField = Object.keys(result.errors)[0];
+			if (firstErrorField) {
+				const el = formRef.current?.querySelector<HTMLElement>(`#${firstErrorField}`);
+				el?.focus();
+			}
 			return;
 		}
 

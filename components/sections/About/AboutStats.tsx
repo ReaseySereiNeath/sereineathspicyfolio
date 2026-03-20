@@ -64,9 +64,9 @@ export function AboutStats() {
 			{stats.map((stat, index) => (
 				<div
 					key={index}
-					className="cursor-default rounded-xl border border-gray-200 bg-gray-50 p-4 transition-all duration-300"
+					className="cursor-default rounded-xl border border-gray-200 bg-gray-50 p-4 transition-[transform,border-color] duration-300"
 				>
-					<stat.icon className="mb-2 h-6 w-6 text-blue-600" />
+					<stat.icon className="mb-2 h-6 w-6 text-blue-600" aria-hidden="true" />
 					<div className="mb-1 text-lg font-semibold text-gray-900 md:text-xl">
 						{stat.value}
 					</div>

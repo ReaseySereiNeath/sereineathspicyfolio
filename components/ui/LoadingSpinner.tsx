@@ -47,7 +47,7 @@ const LoadingSpinnerComponent = ({
 	fullScreen = false,
 }: LoadingSpinnerProps) => {
 	const spinner = (
-		<div className="flex flex-col items-center justify-center gap-3">
+		<div className="flex flex-col items-center justify-center gap-3" role="status" aria-label="Loading">
 			<div className={twMerge(spinnerVariants({ variant, size }), className)} />
 			{text && (
 				<p

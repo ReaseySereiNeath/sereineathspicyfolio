@@ -76,7 +76,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
 				ref={menuButtonRef}
 				onClick={() => setIsOpen(!isOpen)}
 				aria-label={isOpen ? "Close menu" : "Open menu"}
-				className="fixed right-4 top-4 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-blue-500/20 bg-gradient-to-br from-gray-900/90 to-gray-800/90 text-white shadow-lg shadow-blue-500/10 backdrop-blur-sm transition-transform duration-300 hover:scale-110 active:scale-95"
+				className="fixed right-4 top-4 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-blue-500/20 bg-gradient-to-br from-gray-900/90 to-gray-800/90 text-white shadow-lg shadow-blue-500/10 backdrop-blur-sm transition-transform duration-300 hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none"
 			>
 				{isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
 			</button>
@@ -87,6 +87,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
 					ref={mobileMenuRef}
 					role="dialog"
 					aria-modal="true"
+					aria-label="Navigation menu"
 					className="fixed inset-0 z-[55] overflow-y-auto overscroll-contain bg-black opacity-0 backdrop-blur-md"
 					onClick={() => setIsOpen(false)}
 					onKeyDown={(e) => { if (e.key === "Escape") setIsOpen(false); }}
@@ -116,7 +117,7 @@ export function Navigation({ currentSection, onNavigate }: NavigationProps) {
 										duration: 0.3,
 									});
 								}}
-								className={`mobile-nav-item relative z-10 text-lg tracking-widest transition-all duration-300 ${
+								className={`mobile-nav-item relative z-10 text-lg tracking-widest transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none focus-visible:rounded-lg ${
 									currentSection === item.id
 										? "bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text font-semibold text-transparent"
 										: "text-gray-400 hover:text-white"
