@@ -170,6 +170,7 @@ export function Journey() {
 						id="svg-stage"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 600 2526.3"
+						aria-hidden="true"
 						className="mt-0 max-w-[600px] origin-left scale-[0.70] overflow-visible md:scale-75 2xl:scale-100"
 					>
 						<path
@@ -391,7 +392,7 @@ export function Journey() {
 						</p>
 						<p>
 							Looking forward to applying my skills and experience in an
-							environment where I can create impact and continue learning...
+							environment where I can create impact and continue learning…
 						</p>
 					</TimelineText>
 				</div>

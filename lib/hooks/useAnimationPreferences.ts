@@ -28,7 +28,7 @@ export function useAnimationPreferences() {
 			setIsMobile(isMobileOrTablet && isTouchDevice);
 		};
 		checkMobile();
-		window.addEventListener("resize", checkMobile);
+		window.addEventListener("resize", checkMobile, { passive: true });
 
 		return () => {
 			motionQuery.removeEventListener("change", handleMotionChange);

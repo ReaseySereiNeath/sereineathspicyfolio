@@ -30,14 +30,14 @@ export function ProjectCard({
 	useIconHover(cardRef, ".project-icon");
 
 	return (
-		<div ref={cardRef} className="group relative cursor-pointer">
+		<div ref={cardRef} className="group relative">
 			{/* Glow effect */}
 			<div
 				className={`glow-effect absolute inset-0 bg-gradient-to-r ${gradient} rounded-2xl opacity-0 blur-xl transition-opacity duration-500`}
 			/>
 
 			{/* Card */}
-			<div className="project-card-content relative h-full rounded-2xl border border-blue-500/10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 backdrop-blur-sm transition-all duration-500 group-hover:border-blue-500/30 md:p-8">
+			<div className="project-card-content relative h-full rounded-2xl border border-blue-500/10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6 backdrop-blur-sm transition-[border-color] duration-500 group-hover:border-blue-500/30 md:p-8">
 				{/* Header */}
 				<div className="mb-6 flex items-start justify-between">
 					<div
@@ -46,11 +46,11 @@ export function ProjectCard({
 						<div className="h-6 w-6 rounded bg-white/20 backdrop-blur-sm" />
 					</div>
 					<div className="flex gap-2">
-						<a href="#" aria-label="View source on GitHub" className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-all duration-300 hover:border-blue-500/50">
-							<Github className="h-4 w-4 text-gray-400" />
+						<a href="#" aria-label="View source on GitHub" className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-[border-color,transform] duration-300 hover:border-blue-500/50 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none">
+							<Github className="h-4 w-4 text-gray-400" aria-hidden="true" />
 						</a>
-						<a href="#" aria-label="View live project" className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-all duration-300 hover:border-blue-500/50">
-							<ExternalLink className="h-4 w-4 text-gray-400" />
+						<a href="#" aria-label="View live project" className="project-icon rounded-lg border border-blue-500/20 bg-gray-800/50 p-2 transition-[border-color,transform] duration-300 hover:border-blue-500/50 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none">
+							<ExternalLink className="h-4 w-4 text-gray-400" aria-hidden="true" />
 						</a>
 					</div>
 				</div>

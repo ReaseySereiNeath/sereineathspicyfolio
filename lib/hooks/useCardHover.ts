@@ -73,7 +73,6 @@ export function useCardHover(
 		options.glowOpacity,
 		options.glowSelector,
 		options.cardSelector,
-		options,
 	]);
 }
 
@@ -178,5 +177,5 @@ export function useScaleHover(
 			target.removeEventListener("mouseenter", handleMouseEnter);
 			target.removeEventListener("mouseleave", handleMouseLeave);
 		};
-	}, [ref, options.scale, options.duration, options.selector, options]);
+	}, [ref, options.scale, options.duration, options.selector]);
 }

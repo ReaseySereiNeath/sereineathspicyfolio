@@ -8,7 +8,7 @@ import { tv, type VariantProps } from "tailwind-variants";
  * Button component variants
  */
 const buttonVariants = tv({
-	base: "rounded-full transition-[transform,box-shadow,opacity] duration-300 font-medium hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none inline-flex items-center justify-center gap-2",
+	base: "rounded-full transition-[transform,box-shadow,opacity] duration-300 font-medium hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none inline-flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none",
 	variants: {
 		variant: {
 			primary:
@@ -73,7 +73,7 @@ const ButtonComponent = ({
 			{isLoading ? (
 				<>
 					<div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-					<span>Loading...</span>
+					<span>Loading…</span>
 				</>
 			) : (
 				<>

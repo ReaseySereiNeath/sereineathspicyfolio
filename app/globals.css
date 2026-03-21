@@ -4,22 +4,22 @@
 
 :root {
 	/* Core colors */
-	--background: "#000000";
-	--foreground: "#ffffff";
+	--background: #000000;
+	--foreground: #ffffff;
 
 	/* Accent colors */
-	--primary: "#3b82f6";
-	--primary-foreground: "#ffffff";
+	--primary: #3b82f6;
+	--primary-foreground: #ffffff;
 
 	/* Border & ring */
-	--border: "#3b82f6";
-	--ring: "#3b82f6";
+	--border: #3b82f6;
+	--ring: #3b82f6;
 
 	/* Border radius */
-	--radius: "0.75rem";
+	--radius: 0.75rem;
 
 	/* Typography */
-	--font-size: "16px";
+	--font-size: 16px;
 }
 
 @layer base {
@@ -30,6 +30,7 @@
 	body {
 		@apply bg-black text-white antialiased;
 	}
+
 
 	html {
 		font-size: var(--font-size);

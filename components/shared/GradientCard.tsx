@@ -8,7 +8,7 @@ import { tv, type VariantProps } from "tailwind-variants";
  * Card variants
  */
 const cardVariants = tv({
-	base: "relative h-full backdrop-blur-sm rounded-2xl transition-all duration-500",
+	base: "relative h-full backdrop-blur-sm rounded-2xl transition-[border-color] duration-500",
 	variants: {
 		variant: {
 			default: "bg-gradient-to-br from-gray-900/90 to-gray-800/90",

@@ -417,13 +417,13 @@ function FolderCard() {
       <div className="mt-6 flex gap-3">
         <a
           href="/cv.pdf"
-          className="w-full rounded-xl bg-blue-400/90 px-4 py-2 text-center text-sm font-medium text-black transition hover:translate-y-[-1px] cursor-pointer"
+          className="w-full rounded-xl bg-blue-400/90 px-4 py-2 text-center text-sm font-medium text-black transition-transform hover:translate-y-[-1px] cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none"
         >
           Download CV
         </a>
         <a
           href="#contact"
-          className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-center text-sm text-white/85 transition hover:bg-white/10 cursor-pointer"
+          className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-center text-sm text-white/85 transition-colors hover:bg-white/10 cursor-pointer focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:outline-none"
         >
           Hire Me
         </a>
